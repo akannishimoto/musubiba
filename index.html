@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>むすびばシェアハウス</title>
+<meta name="description" content="北海道釧路市阿寒町のシェアハウス「むすびば」。暮らしと人に会いに来る場所。2027年1月オープン、入居者募集中。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+/* Layout: a single quiet column on cold snow paper; the one bold element is the vertical 表札 (nameplate) headline in the hero. */
+:root{
+  --snow:#F2F4F1;        /* page ground: cold paper, not cream */
+  --ink:#1D2622;         /* body text */
+  --muted:#5B6862;       /* secondary text */
+  --spruce:#24473A;      /* accent: 阿寒の針葉樹 */
+  --hinoki:#E6D2AE;      /* nameplate wood */
+  --line:#CBD3CD;        /* rules and borders */
+  --panel:#FFFFFF;       /* raised surfaces */
+  --todo:#B4472E;        /* 未記入の箇所 */
+  --serif:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho","Noto Serif JP","Noto Serif CJK JP",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --snow:#151B18;--ink:#E7ECE8;--muted:#A3B0A9;--spruce:#8FC2AC;--hinoki:#C9B48E;--line:#2E3934;--panel:#1C2420;--todo:#F08A70;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --snow:#151B18;--ink:#E7ECE8;--muted:#A3B0A9;--spruce:#8FC2AC;--hinoki:#C9B48E;--line:#2E3934;--panel:#1C2420;--todo:#F08A70;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--snow);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.9;letter-spacing:.02em}
+img{max-width:100%;display:block}
+a{color:var(--spruce)}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--spruce);outline-offset:3px}
+.wrap{max-width:44rem;margin:0 auto;padding-inline:20px}
+h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.5rem,4.5vw,1.9rem);line-height:1.5;margin:0 0 1.2rem;text-wrap:balance}
+h3{font-family:var(--serif);font-weight:700;font-size:1.15rem;margin:2rem 0 .6rem}
+p{margin:0 0 1rem}
+section{padding-block:4.5rem;border-top:1px solid var(--line)}
+.todo{color:var(--todo);font-weight:700}
+
+/* hero */
+.hero{padding-block:3rem 4rem;border:0}
+.hero .top{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:start}
+.plate{writing-mode:vertical-rl;text-orientation:upright;font-feature-settings:"vert";font-family:var(--serif);font-weight:800;font-size:clamp(2rem,7vw,3.2rem);line-height:1.5;letter-spacing:.08em;margin:0;
+  background:var(--hinoki);color:#2A2117;padding:1.6rem 1.1rem;border-radius:3px;box-shadow:inset 0 0 0 1px rgba(60,40,20,.25)}
+.hero-copy{min-width:0;padding-top:.5rem}
+.brand{font-family:var(--serif);font-size:1.05rem;color:var(--muted);margin-bottom:1.6rem}
+.brand b{font-size:1.6rem;color:var(--ink);font-weight:800;margin-right:.4rem}
+.lead{font-size:1.05rem}
+.open{display:inline-block;margin:1.2rem 0 1.6rem;padding:.35rem .8rem;border:1px solid var(--spruce);color:var(--spruce);font-weight:700}
+.btn{display:inline-block;background:var(--spruce);color:var(--snow);text-decoration:none;font-weight:700;padding:.9rem 1.6rem;border-radius:2px}
+.btn:hover{filter:brightness(1.1)}
+.photo{margin:2rem 0 0;border:1px dashed var(--line);background:var(--panel);aspect-ratio:3/2;max-width:100%;display:grid;place-items:center;color:var(--muted);font-size:.9rem;text-align:center;padding:1rem}
+
+/* lists */
+ul.plain{margin:0;padding:0;list-style:none;display:grid;gap:.7rem}
+ul.plain li{padding-left:1.2rem;position:relative}
+ul.plain li::before{content:"";position:absolute;left:0;top:.85em;width:.45rem;height:1px;background:var(--spruce)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.two>div{min-width:0}
+.two h3{margin-top:0}
+
+/* table */
+.table{overflow-x:auto;margin:1.2rem 0 1.4rem}
+table{border-collapse:collapse;width:100%;min-width:22rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.75rem .6rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:500;color:var(--muted);font-size:.9rem}
+td.price{font-family:var(--serif);font-weight:700;font-size:1.15rem;white-space:nowrap}
+.note{font-size:.92rem;color:var(--muted)}
+
+/* voices */
+.voices{display:grid;gap:1.4rem;margin-top:1.4rem}
+blockquote{margin:0;padding:1.2rem 1.3rem;background:var(--panel);border:1px solid var(--line)}
+blockquote cite{display:block;font-style:normal;font-size:.88rem;color:var(--muted);margin-top:.6rem}
+
+/* faq */
+details{border-bottom:1px solid var(--line);padding-block:.9rem}
+summary{cursor:pointer;font-weight:700;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"＋";color:var(--spruce);margin-right:.6rem}
+details[open] summary::before{content:"−"}
+details p{margin:.7rem 0 0 1.6rem}
+
+/* steps */
+ol.steps{margin:0 0 2rem;padding-left:1.4rem;display:grid;gap:.5rem}
+.cta{text-align:left}
+footer{border-top:1px solid var(--line);padding-block:2.5rem;font-size:.9rem;color:var(--muted)}
+footer a{margin-right:1.2rem}
+
+@media (max-width:640px){
+  .hero .top{grid-template-columns:1fr;gap:1.6rem}
+  .plate{writing-mode:horizontal-tb;text-orientation:mixed;letter-spacing:.06em;padding:1.1rem 1.2rem;font-size:clamp(1.6rem,7.5vw,2.2rem)}
+  .two{grid-template-columns:1fr;gap:1.6rem}
+  section{padding-block:3.2rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- 申込フォームのURLは FORM_URL を検索して2か所とも差し替える -->
+
+<header class="hero">
+  <div class="wrap top">
+    <h1 class="plate">名前で呼ばれる<br>暮らしがある。</h1>
+    <div class="hero-copy">
+      <p class="brand"><b>むすびば</b>シェアハウス</p>
+      <p class="lead">北海道・釧路市阿寒町の、暮らしと人に会いに来るシェアハウスです。</p>
+      <p class="open">2027年1月オープン　1月入居者を募集中</p>
+      <p><a class="btn" href="FORM_URL" target="_blank" rel="noopener">入居の相談をする</a></p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="photo">写真:むすびばの外観、または食卓を囲む入居者と地域の人</div>
+  </div>
+</header>
+
+<main>
+<section id="about">
+  <div class="wrap">
+    <h2>阿寒暮らし体験を行う、地域と人のむすびば。</h2>
+    <p>むすびばは、釧路市阿寒町にあるシェアハウスです。観光で通り過ぎるのではなく、ひと月、ふた月と町に暮らしてみる場所です。</p>
+    <p>町のお祭りに出る。近所の人と立ち話をする。持ち寄りでご飯会をする。そうしているうちに、いつの間にか名前で呼ばれるようになっている。そんな暮らしを、まずは体験しに来てください。</p>
+    <p>仕事を探しに来る場所ではありません。暮らしと人に会いに来る場所です。</p>
+  </div>
+</section>
+
+<section id="for">
+  <div class="wrap">
+    <h2>こんな人に来てほしい</h2>
+    <ul class="plain">
+      <li>都会での仕事や人間関係に少し疲れて、次を決める前に立ち止まりたい人</li>
+      <li>休職中、転職の合間、季節の仕事を渡り歩いている途中の人</li>
+      <li>ゲストハウスで知らない人と話すのが好きな人</li>
+      <li>自然の近くで、リモートワークや二拠点の暮らしを試してみたい人</li>
+      <li>いつか地方で何かを始めてみたいけれど、まずは住んでみてから考えたい人</li>
+    </ul>
+    <p class="note" style="margin-top:1.4rem">静かに一人で過ごしたいだけの人には、合わないかもしれません。共用のリビングや食卓で顔を合わせるのが、むすびばの日常です。</p>
+  </div>
+</section>
+
+<section id="akan">
+  <div class="wrap">
+    <h2>阿寒の暮らし</h2>
+    <div class="two">
+      <div>
+        <h3>いいところ</h3>
+        <ul class="plain">
+          <li>人口約2,700人(阿寒本町地区)。来る人を拒まず、去る人を追わない距離感</li>
+          <li>町なかを動物や鳥が歩く。ゴルフ、釣り、スキーも近く、人混みがない</li>
+          <li>空き家や空き店舗があり、小さく何かを始めやすい</li>
+          <li>釧路空港に近く、リモートワークや二拠点の暮らしと相性がいい</li>
+        </ul>
+      </div>
+      <div>
+        <h3>正直に伝えたいところ</h3>
+        <ul class="plain">
+          <li>冬は雪と寒さのある、本物の北海道の冬</li>
+          <li>空港や釧路駅へのバスは1日3〜4本程度。車があると便利</li>
+          <li>町の規模のわりにお店は少なめ</li>
+          <li>若い人はまだ少ない。だからこそ、来た人の存在が町に届きやすい</li>
+        </ul>
+      </div>
+    </div>
+    <div class="photo">写真:町を歩く鳥や動物、地域の行事、雪の町並み</div>
+  </div>
+</section>
+
+<section id="rooms">
+  <div class="wrap">
+    <h2>部屋と料金</h2>
+    <p>入居は1か月以上から。料金には光熱費・管理費・Wi-Fi(光回線)がすべて含まれています。</p>
+    <div class="table">
+      <table>
+        <thead><tr><th>部屋</th><th>広さ</th><th>1人あたり月額</th></tr></thead>
+        <tbody>
+          <tr><td>1人部屋</td><td>6畳</td><td class="price">55,000円</td></tr>
+          <tr><td>2人部屋(相部屋)</td><td>10畳</td><td class="price">45,000円</td></tr>
+          <tr><td>2〜3人部屋(相部屋)</td><td>12畳</td><td class="price">45,000円</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="plain">
+      <li>カップルで入居の場合:2人部屋は1人45,000円ずつ、1人部屋に2人なら2人で70,000円</li>
+      <li>1か月未満の短期滞在はご相談ください</li>
+      <li>地域のお手伝い(週10時間程度)と引き換えに、家賃無料で滞在できる枠を設けることがあります。枠の有無は時期によって変わるため、お問い合わせください</li>
+    </ul>
+
+    <h3>設備</h3>
+    <ul class="plain">
+      <li>共用:キッチン、リビング、風呂、トイレ、サウナ、ランドリールーム、ガレージ(自転車・アウトドア用品を置けます)</li>
+      <li>家具はすべてそろっています。身の回りの物があれば、その日から暮らせます</li>
+      <li>寝具:マットレス、枕、布団、毛布あり。シーツはご持参ください(中古の貸し出しは滞在中1,000円)</li>
+    </ul>
+
+    <h3>暮らしのルール</h3>
+    <ul class="plain">
+      <li>男女混在のシェアハウスです(部屋は男女別)</li>
+      <li>喫煙は屋外のみ。ペットは原則不可(音や匂いの出ない生き物はご相談ください)</li>
+      <li>リモートワーク歓迎。食事は各自で用意し、ときどき持ち寄りのご飯会をしています</li>
+      <li>退去は2週間前までにお知らせください</li>
+    </ul>
+    <div class="photo">写真:各部屋、リビング、キッチン、サウナ</div>
+  </div>
+</section>
+
+<section id="voices">
+  <div class="wrap">
+    <h2>滞在した人の声</h2>
+    <p>これまでに6人がむすびばに滞在しました。</p>
+    <div class="voices">
+      <blockquote><span class="todo">【本人の言葉を1〜2文】</span><cite>くるみちゃん/旅人・ライダー</cite></blockquote>
+      <blockquote><span class="todo">【本人の言葉を1〜2文】</span><cite>かのんちゃん/フリーランス・学生</cite></blockquote>
+      <blockquote><span class="todo">【本人の言葉を1〜2文】</span><cite>なおやくん/会社員</cite></blockquote>
+    </div>
+    <p style="margin-top:1.4rem"><a href="https://www.instagram.com/akan_masakun/" target="_blank" rel="noopener">滞在記をInstagramで読む</a></p>
+  </div>
+</section>
+
+<section id="host">
+  <div class="wrap">
+    <h2>管理人より</h2>
+    <p><b>西本将来(にしもと・まさき)</b></p>
+    <p>釧路市阿寒町で地域おこし協力隊として、空き家の活用と移住の相談を担当しています。むすびばは、私自身が暮らしている家です。<span class="todo">【出身地・移住の経緯を1文】</span></p>
+    <p>阿寒に来て感じたのは、この町では一人ひとりがちゃんと見えている、ということでした。行事に出れば声をかけられ、名前を覚えてもらえる。その心地よさを、都会で少し疲れた人に味わってほしくて、むすびばを始めました。</p>
+    <p>いつかこの町で、小さなお店や新しい挑戦が次々に生まれてほしいと思っています。まずは暮らしてみて、阿寒のいいところも、そうでないところも見てください。</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>よくある質問</h2>
+    <details><summary>仕事がなくても入居できますか?</summary><p>できます。休職中や転職の合間に来る人もいます。地域の仕事やお手伝いを探したい人には、つながりのある農家・お店・宿泊施設などを紹介できる場合があります(求人の状況によります)。</p></details>
+    <details><summary>車がなくても暮らせますか?</summary><p>暮らせます。町内にコンビニやスーパーがあり、空港・釧路駅へはバスが1日3〜4本程度あります。町内にはレンタカーやレンタサイクルを扱う事業者もあります。</p></details>
+    <details><summary>どんな人が住んでいますか?</summary><p>これまでに旅人、学生、会社員、フリーランス、リモートワーカーなどが滞在しました。管理人も同じ家に住んでいます。</p></details>
+    <details><summary>冬でも大丈夫ですか?</summary><p>寒さと雪はありますが、<span class="todo">【暖房の設備】</span>。冬の北海道の暮らしを体験したい人には、むしろいい季節です。</p></details>
+    <details><summary>入居の前に見学できますか?</summary><p>オンラインでの面談や、現地の見学をご相談ください。</p></details>
+    <details><summary>将来、阿寒で起業や移住をしたい場合も相談できますか?</summary><p>はい。管理人は空き家の活用と移住の相談を担当しています。暮らしながら一緒に考えましょう。</p></details>
+  </div>
+</section>
+
+<section id="access">
+  <div class="wrap">
+    <h2>アクセス</h2>
+    <ul class="plain">
+      <li>北海道釧路市阿寒町(詳しい住所は、お申し込み後にお伝えします)</li>
+      <li>釧路空港から阿寒バスで<span class="todo">【所要時間】</span></li>
+      <li>JR釧路駅から阿寒バスで<span class="todo">【所要時間】</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="apply">
+  <div class="wrap cta">
+    <h2>申し込みの流れ</h2>
+    <ol class="steps">
+      <li>申込フォームから、入居の相談を送る</li>
+      <li>管理人から<span class="todo">【3日】</span>以内に連絡</li>
+      <li>オンライン面談(30分ほど)で、暮らし方や希望をすり合わせる</li>
+      <li>入居日と部屋を決めて、契約</li>
+      <li>入居。阿寒での暮らしが始まります</li>
+    </ol>
+    <p>2027年1月入居の申し込みは、<span class="todo">【2026年12月20日】</span>まで受け付けています。</p>
+    <p><a class="btn" href="FORM_URL" target="_blank" rel="noopener">入居の相談をする</a></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><a href="https://www.instagram.com/akan_masakun/" target="_blank" rel="noopener">Instagram @akan_masakun</a><a href="https://linktr.ee/akan.nishimoto" target="_blank" rel="noopener">Linktree</a></p>
+    <p>むすびばシェアハウス 北海道釧路市阿寒町</p>
+  </div>
+</footer>
+</body>
+</html>
