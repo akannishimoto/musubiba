@@ -4,275 +4,418 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>むすびばシェアハウス</title>
-<meta name="description" content="北海道釧路市阿寒町のシェアハウス「むすびば」。暮らしと人に会いに来る場所。2027年1月オープン、入居者募集中。">
+<meta name="description" content="北海道・阿寒町のシェアハウス「むすびば」。ゲストハウスより長く、移住より軽く。1か月から、町の人と顔見知りになる暮らしを。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%22100%22%20fill%3D%22%234A5838%22/%3E%3Cpath%20d%3D%22M30%20132%20C62%20130%2092%20128%20104%20112%20C116%2096%20104%2074%2088%2080%20C72%2086%2082%20112%20108%20116%20C134%20120%20150%20102%20152%2082%20C153%2072%20152%2064%20150%2058%22%20fill%3D%22none%22%20stroke%3D%22%23F2B83C%22%20stroke-width%3D%2213%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3Ccircle%20cx%3D%22149%22%20cy%3D%2245%22%20r%3D%2214%22%20fill%3D%22%23F2B83C%22/%3E%3C/svg%3E">
 <style>
-/* Layout: a single quiet column on cold snow paper; the one bold element is the vertical 表札 (nameplate) headline in the hero. */
+/* Layout: むすびばのブランド(オリーブ・からし・生成り、Yusei Magic)。オリーブのヒーローに町の稜線、その下は生成りの地に写真が並ぶ1カラム。 */
 :root{
-  --snow:#F2F4F1;        /* page ground: cold paper, not cream */
-  --ink:#1D2622;         /* body text */
-  --muted:#5B6862;       /* secondary text */
-  --spruce:#24473A;      /* accent: 阿寒の針葉樹 */
-  --hinoki:#E6D2AE;      /* nameplate wood */
-  --line:#CBD3CD;        /* rules and borders */
-  --panel:#FFFFFF;       /* raised surfaces */
-  --todo:#B4472E;        /* 未記入の箇所 */
-  --serif:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho","Noto Serif JP","Noto Serif CJK JP",serif;
-  --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --paper:#F3EEE4;     /* 地:生成り */
+  --ink:#2A2A27;       /* 文字:照明の黒 */
+  --muted:#6E6A5F;     /* 補足 */
+  --sky:#4A5838;       /* ヒーロー:ソファのオリーブ */
+  --sky-soft:#E9E2D3;  /* 帯・写真枠 */
+  --sun:#E3A82E;       /* 灯り:クッションのからし */
+  --night:#4A5838;     /* ボタン・強調:オリーブ */
+  --line:#DDD5C6;
+  --card:#FBF8F2;
+  --todo:#C2412D;
+  --round:"Yusei Magic","Hiragino Maru Gothic ProN","Noto Sans JP",system-ui,sans-serif;
+  --sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --snow:#151B18;--ink:#E7ECE8;--muted:#A3B0A9;--spruce:#8FC2AC;--hinoki:#C9B48E;--line:#2E3934;--panel:#1C2420;--todo:#F08A70;color-scheme:dark}}
+  --paper:#1D201A;--ink:#EEE9DE;--muted:#ABA591;--sky:#2F3A27;--sky-soft:#262A21;--sun:#E8B54A;--night:#E8B54A;--line:#3A3F33;--card:#24281F;--todo:#FF8A70;color-scheme:dark}}
 :root[data-theme="dark"]{
-  --snow:#151B18;--ink:#E7ECE8;--muted:#A3B0A9;--spruce:#8FC2AC;--hinoki:#C9B48E;--line:#2E3934;--panel:#1C2420;--todo:#F08A70;color-scheme:dark}
+  --paper:#1D201A;--ink:#EEE9DE;--muted:#ABA591;--sky:#2F3A27;--sky-soft:#262A21;--sun:#E8B54A;--night:#E8B54A;--line:#3A3F33;--card:#24281F;--todo:#FF8A70;color-scheme:dark}
 
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--snow);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.9;letter-spacing:.02em}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.95;letter-spacing:.03em}
 img{max-width:100%;display:block}
-a{color:var(--spruce)}
-a:focus-visible,.btn:focus-visible{outline:3px solid var(--spruce);outline-offset:3px}
-.wrap{max-width:44rem;margin:0 auto;padding-inline:20px}
-h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.5rem,4.5vw,1.9rem);line-height:1.5;margin:0 0 1.2rem;text-wrap:balance}
-h3{font-family:var(--serif);font-weight:700;font-size:1.15rem;margin:2rem 0 .6rem}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.wrap{max-width:62rem;margin:0 auto;padding-inline:20px}
+.narrow{max-width:40rem}
+h1,h2,h3{font-family:var(--round);font-weight:400;line-height:1.45;word-break:auto-phrase;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.6rem,4.6vw,2.4rem);margin-bottom:1.4rem}
+h3{font-size:1.25rem;font-weight:400;margin-bottom:.4rem}
 p{margin:0 0 1rem}
-section{padding-block:4.5rem;border-top:1px solid var(--line)}
+section{padding-block:5.5rem}
 .todo{color:var(--todo);font-weight:700}
+.sub{color:var(--muted)}
+
+/* buttons */
+.btn{display:inline-block;background:var(--night);color:var(--paper);font-family:var(--round);font-weight:400;font-size:1.1rem;text-decoration:none;padding:1rem 2rem;border-radius:999px}
+.btn:hover{transform:translateY(-1px)}
+.btn.sun{background:var(--sun);color:#2A2A27}
 
 /* hero */
-.hero{padding-block:3rem 4rem;border:0}
-.hero .top{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:start}
-.plate{writing-mode:vertical-rl;text-orientation:upright;font-feature-settings:"vert";font-family:var(--serif);font-weight:800;font-size:clamp(2rem,7vw,3.2rem);line-height:1.5;letter-spacing:.08em;margin:0;
-  background:var(--hinoki);color:#2A2117;padding:1.6rem 1.1rem;border-radius:3px;box-shadow:inset 0 0 0 1px rgba(60,40,20,.25)}
-.hero-copy{min-width:0;padding-top:.5rem}
-.brand{font-family:var(--serif);font-size:1.05rem;color:var(--muted);margin-bottom:1.6rem}
-.brand b{font-size:1.6rem;color:var(--ink);font-weight:800;margin-right:.4rem}
-.lead{font-size:1.05rem}
-.open{display:inline-block;margin:1.2rem 0 1.6rem;padding:.35rem .8rem;border:1px solid var(--spruce);color:var(--spruce);font-weight:700}
-.btn{display:inline-block;background:var(--spruce);color:var(--snow);text-decoration:none;font-weight:700;padding:.9rem 1.6rem;border-radius:2px}
-.btn:hover{filter:brightness(1.1)}
-.photo{margin:2rem 0 0;border:1px dashed var(--line);background:var(--panel);aspect-ratio:3/2;max-width:100%;display:grid;place-items:center;color:var(--muted);font-size:.9rem;text-align:center;padding:1rem}
+.hero{background:var(--sky);color:#F3EEE4;padding-block:2rem 0;overflow:hidden}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+.logo-svg{display:block;width:auto}
+.logo small{font-size:.8rem;opacity:.85}
+.nav a.navlink{font-family:var(--round);font-weight:400;font-size:.95rem;text-decoration:none;border-bottom:2px solid currentColor}
+.hero-body{padding-block:4.5rem 2.5rem;max-width:44rem}
+.hero h1{font-size:clamp(2.3rem,8vw,4.6rem);line-height:1.3;letter-spacing:.02em}
+.hero .lead{font-size:clamp(1rem,2.6vw,1.15rem);margin:1.6rem 0 2rem;max-width:34rem}
+.badge{display:inline-block;background:#F3EEE4;color:#3F4A30;font-family:var(--round);font-weight:400;font-size:.9rem;padding:.3rem 1rem;border-radius:999px;margin-bottom:1.6rem}
+.ridge{display:block;width:100%;height:auto;margin-top:1rem}
+.ridge .m1{fill:#F3EEE4;opacity:.14}
+.ridge .m2{fill:var(--paper)}
 
-/* lists */
-ul.plain{margin:0;padding:0;list-style:none;display:grid;gap:.7rem}
-ul.plain li{padding-left:1.2rem;position:relative}
-ul.plain li::before{content:"";position:absolute;left:0;top:.85em;width:.45rem;height:1px;background:var(--spruce)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
-.two>div{min-width:0}
-.two h3{margin-top:0}
+/* intro */
+.intro{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center}
+.intro>div{min-width:0}
+.ph{background:var(--sky-soft);border-radius:18px;display:grid;place-items:center;color:var(--muted);font-size:.85rem;text-align:center;padding:1rem;aspect-ratio:4/3;max-width:100%}
+.ph.tall{aspect-ratio:3/4}
+.ph.wide{aspect-ratio:16/9}
 
-/* table */
-.table{overflow-x:auto;margin:1.2rem 0 1.4rem}
-table{border-collapse:collapse;width:100%;min-width:22rem;font-variant-numeric:tabular-nums}
-th,td{text-align:left;padding:.75rem .6rem;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-weight:500;color:var(--muted);font-size:.9rem}
-td.price{font-family:var(--serif);font-weight:700;font-size:1.15rem;white-space:nowrap}
-.note{font-size:.92rem;color:var(--muted)}
+/* three things */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:2.4rem}
+.three>div{min-width:0}
+.three .ph{margin-bottom:1rem}
+.kicker{font-family:var(--round);font-weight:400;color:var(--muted);font-size:.95rem;margin-bottom:.2rem}
+
+/* people */
+.band{background:var(--sky-soft)}
+.people{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2rem}
+.person{background:var(--card);border-radius:18px;padding:1.4rem 1.5rem}
+.person b{font-family:var(--round);display:block;font-size:1.05rem;margin-bottom:.3rem}
+.person span{font-size:.95rem;color:var(--muted)}
+
+/* honest */
+.honest{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:1.6rem}
+.honest>div{min-width:0}
+.band .ph{background:var(--card)}
+.nb{display:inline-block}
+.honest ul{margin:0;padding:0;list-style:none;display:grid;gap:1rem}
+.honest li{padding-left:1.6rem;position:relative}
+.honest li::before{position:absolute;left:0;top:0;font-family:var(--round);font-weight:400}
+.good li::before{content:"○";color:var(--night)}
+.meh li::before{content:"△";color:var(--muted)}
+.honest h3{margin-bottom:1rem}
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;gap:1rem;margin-top:3rem}
+.gallery .ph{aspect-ratio:auto;min-height:12rem}
+
+
+/* living */
+.living{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;align-items:center}
+.living>div{min-width:0}
+.living .ph.wide{aspect-ratio:4/3}
+.spots{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.4rem}
+.spots li{font-size:.92rem;color:var(--muted);border-top:2px solid var(--sun);padding-top:.6rem;min-width:0}
+.spots b{display:block;font-family:var(--round);color:var(--ink);font-size:1rem}
+/* rooms */
+.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin:2rem 0}
+.room{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.2rem;min-width:0}
+.room .ph{aspect-ratio:4/3;margin-bottom:1rem;border-radius:12px}
+.room h3{margin:0}
+.room .size{color:var(--muted);font-size:.9rem}
+.price{font-family:var(--round);font-weight:400;font-size:1.9rem;line-height:1.2;margin-top:.6rem;font-variant-numeric:tabular-nums}
+.price small{font-size:.85rem;font-weight:500;color:var(--muted);margin-left:.3rem}
+.inc{background:var(--sky-soft);border-radius:18px;padding:1.4rem 1.6rem;margin-bottom:2.4rem}
+.inc p:last-child{margin:0}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.cols>div{min-width:0}
+.cols ul{margin:0;padding-left:1.2rem;display:grid;gap:.5rem}
+
+/* exchange */
+.exchange{background:var(--night);color:var(--paper)}
+.exchange .sub{color:inherit;opacity:.8}
+.exchange .eq{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;font-family:var(--round);font-weight:400;font-size:clamp(1.05rem,3.2vw,1.3rem);margin:2rem 0}
+.exchange .eq span{white-space:nowrap;background:var(--sun);color:#1C2B3A;padding:.5rem 1.2rem;border-radius:999px}
 
 /* voices */
-.voices{display:grid;gap:1.4rem;margin-top:1.4rem}
-blockquote{margin:0;padding:1.2rem 1.3rem;background:var(--panel);border:1px solid var(--line)}
-blockquote cite{display:block;font-style:normal;font-size:.88rem;color:var(--muted);margin-top:.6rem}
+.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem}
+.voice{background:var(--card);border-radius:18px;padding:1.4rem;min-width:0;display:flex;flex-direction:column;gap:.8rem}
+.voice .ph{aspect-ratio:1;border-radius:12px}
+.voice cite{font-style:normal;font-size:.9rem;color:var(--muted)}
+
+/* host */
+.host{display:grid;grid-template-columns:16rem 1fr;gap:3rem;align-items:start}
+.host>div{min-width:0}
 
 /* faq */
-details{border-bottom:1px solid var(--line);padding-block:.9rem}
-summary{cursor:pointer;font-weight:700;list-style:none}
+details{border-bottom:1px solid var(--line);padding-block:1.1rem}
+summary{cursor:pointer;font-family:var(--round);font-weight:400;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:1rem}
 summary::-webkit-details-marker{display:none}
-summary::before{content:"＋";color:var(--spruce);margin-right:.6rem}
-details[open] summary::before{content:"−"}
-details p{margin:.7rem 0 0 1.6rem}
+summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--muted)}
+details[open] summary::after{content:"−"}
+details p{margin:.8rem 0 0}
 
-/* steps */
-ol.steps{margin:0 0 2rem;padding-left:1.4rem;display:grid;gap:.5rem}
-.cta{text-align:left}
-footer{border-top:1px solid var(--line);padding-block:2.5rem;font-size:.9rem;color:var(--muted)}
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin:2.4rem 0;padding:0;list-style:none;counter-reset:s}
+.flow li{background:var(--card);border-radius:18px;padding:1.4rem;counter-increment:s;min-width:0}
+.flow li::before{content:counter(s);display:grid;place-items:center;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--sun);color:#2A2A27;font-family:var(--round);font-weight:400;margin-bottom:.8rem}
+.flow b{font-family:var(--round);display:block;font-size:1.1rem;margin-bottom:.3rem}
+.final{text-align:center}
+.final .btn{margin-top:1rem}
+
+footer{padding-block:2.5rem;font-size:.9rem;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
 footer a{margin-right:1.2rem}
 
-@media (max-width:640px){
-  .hero .top{grid-template-columns:1fr;gap:1.6rem}
-  .plate{writing-mode:horizontal-tb;text-orientation:mixed;letter-spacing:.06em;padding:1.1rem 1.2rem;font-size:clamp(1.6rem,7.5vw,2.2rem)}
-  .two{grid-template-columns:1fr;gap:1.6rem}
-  section{padding-block:3.2rem}
+@media (max-width:760px){
+  section{padding-block:4rem}
+  .intro,.honest,.cols,.host,.living{grid-template-columns:1fr;gap:2rem}
+  .three,.rooms,.voices,.flow,.people{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+  .gallery .ph:first-child{grid-column:1/-1}
+  .host .ph{max-width:14rem}
+  .hero-body{padding-block:3rem 1.5rem}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.person b,.flow b,.spots b,.voice b{font-weight:400}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body>
-
-<!-- 申込フォームのURLは FORM_URL を検索して2か所とも差し替える -->
+<!--
+  差し替えメモ
+  ・申込フォームのURL:「https://docs.google.com/forms/d/e/1FAIpQLSfh2URaJs0p1q-b7uz_g9CNVXAaE6Cpme1CMsqIKFfo1lqntw/viewform」を検索し、3か所すべて置き換える
+  ・写真:class="ph" の枠を <img src="images/ファイル名.jpg" alt="説明" class="ph"> に置き換える
+  ・赤字(class="todo")の箇所を埋める
+-->
 
 <header class="hero">
-  <div class="wrap top">
-    <h1 class="plate">名前で呼ばれる<br>暮らしがある。</h1>
-    <div class="hero-copy">
-      <p class="brand"><b>むすびば</b>シェアハウス</p>
-      <p class="lead">北海道・釧路市阿寒町の、暮らしと人に会いに来るシェアハウスです。</p>
-      <p class="open">2027年1月オープン　1月入居者を募集中</p>
-      <p><a class="btn" href="FORM_URL" target="_blank" rel="noopener">入居の相談をする</a></p>
+  <div class="wrap">
+    <nav class="nav" aria-label="サイト">
+      <a class="logo" href="#"><svg class="logo-svg" viewBox="20 24 380 128" height="44" role="img" aria-label="むすびば"><path d="M82.76 84.25999999999999Q82.55000000000001 83.63 82.55000000000001 83.21Q82.55000000000001 81.81 84.16 81.39L87.52000000000001 80.47999999999999Q87.80000000000001 80.41 88.01 80.375Q88.22 80.34 88.43 80.34Q89.76 80.34 90.46000000000001 81.74Q93.33000000000001 87.27 93.33000000000001 93.22Q93.33000000000001 99.45 88.745 102.845Q84.16 106.24 76.04 106.24Q60.5 106.24 57.77 98.26Q55.32 99.17 52.17 99.17Q46.29 99.17 42.86 95.845Q39.43 92.52 39.43 86.71Q39.43 80.41 42.44 77.12Q45.45 73.83 51.400000000000006 73.83Q54.760000000000005 73.83 57.28 74.74V68.93H45.31Q43.0 68.93 43.0 66.83Q43.0 64.72999999999999 45.31 64.72999999999999H57.28V57.029999999999994Q57.28 54.72 59.59 54.72H63.93000000000001Q66.24000000000001 54.72 66.24000000000001 57.029999999999994V64.72999999999999H74.08000000000001Q76.39 64.72999999999999 76.39 66.83Q76.39 68.93 74.08000000000001 68.93H66.24000000000001V78.52Q66.24000000000001 83.42 65.54 87.06Q66.03 90.07 66.03 93.92Q66.03 97.28 66.80000000000001 99.03Q67.57000000000001 100.78 69.74000000000001 101.41Q71.91 102.04 76.04 102.04Q80.59 102.04 82.48 100.045Q84.37 98.05 84.37 93.22Q84.37 91.19 83.915 88.705Q83.46000000000001 86.22 82.76 84.25999999999999ZM94.94 71.16999999999999Q95.5 71.94 95.5 72.57Q95.5 73.75999999999999 93.96000000000001 74.32L91.16 75.3Q90.67 75.50999999999999 90.11000000000001 75.50999999999999Q88.92 75.50999999999999 88.08000000000001 74.32L79.33000000000001 62.13999999999999Q78.77000000000001 61.37 78.77000000000001 60.739999999999995Q78.77000000000001 59.55 80.31 58.989999999999995L83.11000000000001 58.01Q83.67 57.8 84.16 57.8Q85.35 57.8 86.19 58.989999999999995ZM48.39 86.71Q48.39 90.49 49.44 92.72999999999999Q50.49 94.97 52.17 94.97Q53.64 94.97 54.83 92.94Q56.02 90.91 56.650000000000006 86.99Q56.09 82.44 54.690000000000005 80.235Q53.290000000000006 78.03 51.400000000000006 78.03Q50.07 78.03 49.230000000000004 80.34Q48.39 82.65 48.39 86.71ZM142.68 105.82Q141.84 107.15 140.58 107.15Q140.37 107.15 140.16000000000003 107.11500000000001Q139.95000000000002 107.08 139.67000000000002 107.01L136.38 106.1Q134.77 105.68 134.77 104.42Q134.77 103.79 135.05 103.23Q136.52 99.59 136.87 94.2Q132.53 96.09 127.21000000000001 96.09Q122.45 96.09 118.81 94.305Q115.17 92.52 113.17500000000001 89.3Q111.18 86.08 111.18 81.81Q111.18 77.96 113.45500000000001 75.125Q115.73 72.28999999999999 119.65 70.71499999999999Q123.57000000000001 69.13999999999999 128.61 69.13999999999999Q131.20000000000002 69.13999999999999 133.26500000000001 69.49Q135.33 69.84 137.01 70.47V62.699999999999996H106.63000000000001Q104.32000000000001 62.699999999999996 104.32000000000001 60.599999999999994Q104.32000000000001 58.49999999999999 106.63000000000001 58.49999999999999H137.01V52.55Q137.01 50.239999999999995 139.32 50.239999999999995H143.66000000000003Q145.97 50.239999999999995 145.97 52.55V58.49999999999999H155.56Q157.87 58.49999999999999 157.87 60.599999999999994Q157.87 62.699999999999996 155.56 62.699999999999996H145.97V81.53Q145.97 82.58 145.83 83.63Q145.9 84.75 145.935 85.8Q145.97 86.85 145.97 87.83V90.14Q145.97 93.71 145.69 96.37Q145.41000000000003 99.03 144.71000000000004 101.235Q144.01000000000002 103.44 142.68 105.82ZM120.14000000000001 81.81Q120.14000000000001 86.5 122.03000000000002 89.195Q123.92000000000002 91.89 127.21000000000001 91.89Q131.20000000000002 91.89 133.685 89.82499999999999Q136.17000000000002 87.75999999999999 136.8 83.97999999999999Q136.38 77.96 134.56 75.65Q132.74 73.34 128.61 73.34Q120.14000000000001 73.34 120.14000000000001 81.81ZM219.82000000000002 60.04Q219.89000000000004 60.32 219.89000000000004 60.81Q219.89000000000004 62.42 218.07000000000002 62.769999999999996L216.04000000000002 63.12Q213.8 63.47 213.31000000000003 61.3L209.74 47.58Q209.67000000000002 47.37 209.63500000000002 47.16Q209.60000000000002 46.949999999999996 209.60000000000002 46.739999999999995Q209.60000000000002 45.199999999999996 211.49 44.849999999999994L213.52000000000004 44.5Q215.76000000000002 44.15 216.25000000000003 46.32ZM212.12 64.31Q212.19000000000003 64.59 212.19000000000003 65.08Q212.19000000000003 66.83 210.3 67.03999999999999L208.27000000000004 67.32Q206.10000000000002 67.67 205.61 65.5L201.97000000000003 50.8Q201.90000000000003 50.519999999999996 201.90000000000003 50.03Q201.90000000000003 48.28 203.79000000000002 48.07L205.82000000000002 47.79Q208.06000000000003 47.44 208.55 49.61ZM217.16000000000003 79.36Q218.14000000000004 80.13 218.14000000000004 80.9Q218.14000000000004 81.81 216.88000000000002 82.58L215.48000000000002 83.42Q214.78000000000003 83.91 214.01000000000005 83.91Q213.03000000000003 83.91 212.26000000000005 83.21L206.38000000000002 78.52Q207.36000000000004 84.05 207.36000000000004 88.81Q207.36000000000004 97.7 202.42500000000004 102.25Q197.49000000000004 106.8 187.97000000000003 106.8Q178.59000000000003 106.8 173.20000000000005 101.41Q167.81000000000003 96.02 167.81000000000003 86.5Q167.81000000000003 78.52 171.17000000000002 72.395Q174.53000000000003 66.27 181.95000000000002 60.739999999999995L167.53000000000003 63.26Q167.39000000000001 63.33 167.21500000000003 63.33Q167.04000000000002 63.33 166.90000000000003 63.33Q165.36 63.33 164.73000000000002 61.65Q164.66000000000003 61.44 164.62500000000003 61.19499999999999Q164.59000000000003 60.949999999999996 164.59000000000003 60.809999999999995Q164.59000000000003 59.339999999999996 166.41000000000003 58.989999999999995L191.19000000000003 54.72Q191.33000000000004 54.65 191.54000000000002 54.65Q191.75000000000003 54.65 191.89000000000004 54.65Q193.15000000000003 54.65 194.13000000000002 55.839999999999996L194.48000000000002 56.33Q195.04000000000002 57.099999999999994 195.04000000000002 57.8Q195.04000000000002 58.779999999999994 193.78000000000003 59.55Q184.75000000000003 64.87 180.76000000000005 71.31Q176.77000000000004 77.75 176.77000000000004 86.5Q176.77000000000004 94.2 179.71000000000004 98.4Q182.65000000000003 102.6 187.97000000000003 102.6Q193.43000000000004 102.6 195.91500000000002 99.38Q198.40000000000003 96.16 198.40000000000003 88.81Q198.40000000000003 86.64 198.05000000000004 83.595Q197.70000000000005 80.55 197.21000000000004 77.47Q196.72000000000003 74.39 196.16000000000003 72.28999999999999Q196.09000000000003 72.08 196.05500000000004 71.87Q196.02000000000004 71.66 196.02000000000004 71.44999999999999Q196.02000000000004 69.97999999999999 197.63000000000002 69.35L200.71000000000004 68.3Q201.34000000000003 68.09 201.90000000000003 68.09Q202.88000000000002 68.09 203.79000000000002 68.78999999999999ZM290.6600000000001 53.40914062499999Q290.7300000000001 53.612458496093744 290.7300000000001 53.96826477050781Q290.7300000000001 55.13734252929687 288.9100000000001 55.39148986816406L286.88000000000005 55.64563720703124Q284.64000000000004 55.89978454589843 284.1500000000001 54.324071044921865L280.58000000000004 44.36149536132812Q280.51000000000005 44.209006958007805 280.475 44.05651855468749Q280.44000000000005 43.90403015136718 280.44000000000005 43.75154174804687Q280.44000000000005 42.63329345703124 282.33000000000004 42.37914611816406L284.36000000000007 42.12499877929687Q286.6 41.87085144042968 287.09000000000003 43.446564941406244ZM282.96000000000004 56.50973815917968Q283.0300000000001 56.713056030273435 283.0300000000001 57.0688623046875Q283.0300000000001 58.33959899902344 281.14000000000004 58.49208740234374L279.11000000000007 58.695405273437494Q276.94000000000005 58.949552612304686 276.45000000000005 57.373839111328124L272.81000000000006 46.69965087890625Q272.74000000000007 46.496333007812495 272.74000000000007 46.14052673339843Q272.74000000000007 44.869790039062494 274.63000000000005 44.71730163574218L276.6600000000001 44.51398376464843Q278.90000000000003 44.259836425781245 279.39000000000004 45.83554992675781ZM284.85 87.83Q286.11000000000007 88.32 286.11000000000007 89.37Q286.11000000000007 90.21 285.06000000000006 90.98L284.15000000000003 91.61Q283.31000000000006 92.24 282.47 92.24Q282.12000000000006 92.24 281.735 92.1Q281.35 91.96 280.93000000000006 91.75Q278.97 90.7 276.45000000000005 89.78999999999999V94.2Q276.45000000000005 99.94 272.95000000000005 102.94999999999999Q269.45000000000005 105.96 263.08000000000004 105.96Q258.81000000000006 105.96 255.41500000000005 104.38499999999999Q252.02000000000004 102.81 250.02500000000003 100.045Q248.03000000000006 97.28 248.03000000000006 93.64Q248.03000000000006 88.67 252.19500000000005 85.905Q256.36000000000007 83.14 263.43000000000006 83.14Q265.32000000000005 83.14 267.49000000000007 83.35V68.37H249.43000000000006Q247.12000000000006 68.37 247.12000000000006 66.27Q247.12000000000006 64.16999999999999 249.43000000000006 64.16999999999999H267.49000000000007V57.379999999999995Q267.49000000000007 55.06999999999999 269.80000000000007 55.06999999999999H274.14000000000004Q276.45000000000005 55.06999999999999 276.45000000000005 57.379999999999995V64.16999999999999H282.26000000000005Q284.57000000000005 64.16999999999999 284.57000000000005 66.27Q284.57000000000005 68.37 282.26000000000005 68.37H276.45000000000005V85.03Q278.90000000000003 85.66 281.0350000000001 86.395Q283.1700000000001 87.13 284.85 87.83ZM241.80000000000004 99.94Q243.69000000000005 99.59 244.32000000000005 101.69Q244.39000000000004 101.9 244.42500000000004 102.075Q244.46000000000004 102.25 244.46000000000004 102.46Q244.46000000000004 103.86 242.50000000000006 104.21L233.40000000000003 105.61Q230.95000000000005 105.96 230.95000000000005 103.51V59.129999999999995Q230.95000000000005 56.81999999999999 233.26000000000005 56.81999999999999H237.60000000000005Q239.91000000000005 56.81999999999999 239.91000000000005 59.129999999999995V100.29ZM256.99000000000007 93.64Q256.99000000000007 95.46 257.55000000000007 97.35Q258.11000000000007 99.24 259.475 100.5Q260.84000000000003 101.76 263.08000000000004 101.76Q265.32000000000005 101.76 266.4050000000001 100.08000000000001Q267.49000000000007 98.4 267.49000000000007 94.2V87.62Q265.32000000000005 87.34 263.43000000000006 87.34Q259.7900000000001 87.34 258.3900000000001 88.63499999999999Q256.99000000000007 89.92999999999999 256.99000000000007 93.64Z" fill="#F3EEE4"/><path d="M38 132 C120 126 210 138 275 130 C315 126 331 118 335 102 C339 86 321 78 313 92 C305 106 333 118 355 102 C369 92 375 74 373 58" fill="none" stroke="#F2B83C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="372" cy="45" r="8" fill="#F2B83C"/></svg><small>シェアハウス/北海道・阿寒町</small></a>
+      <a class="navlink" href="https://docs.google.com/forms/d/e/1FAIpQLSfh2URaJs0p1q-b7uz_g9CNVXAaE6Cpme1CMsqIKFfo1lqntw/viewform" target="_blank" rel="noopener">入居の相談</a>
+    </nav>
+    <div class="hero-body">
+      <p class="badge">2027年1月オープン/入居者募集中</p>
+      <h1><span class="nb">ただいま、と</span><br><span class="nb">言える町が、</span><br><span class="nb">ひとつ増える。</span></h1>
+      <p class="lead">北海道・阿寒町のシェアハウス、むすびば。ひと月暮らせば、町に顔と名前を覚えてくれる人ができます。</p>
+      <a class="btn sun" href="https://docs.google.com/forms/d/e/1FAIpQLSfh2URaJs0p1q-b7uz_g9CNVXAaE6Cpme1CMsqIKFfo1lqntw/viewform" target="_blank" rel="noopener">入居の相談をする</a>
     </div>
   </div>
-  <div class="wrap">
-    <div class="photo">写真:むすびばの外観、または食卓を囲む入居者と地域の人</div>
-  </div>
+  <svg class="ridge" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true">
+    <path class="m1" d="M0 150 L180 92 L300 120 L470 40 L560 78 L700 60 L860 118 L1010 70 L1180 110 L1320 84 L1440 108 L1440 200 L0 200Z"/>
+    <path class="m2" d="M0 178 C240 150 480 168 720 160 C960 152 1200 170 1440 158 L1440 200 L0 200Z"/>
+  </svg>
 </header>
 
 <main>
 <section id="about">
+  <div class="wrap intro">
+    <div>
+      <h2>泊まるでも、移住するでもなく。</h2>
+      <p>ゲストハウスより長く、移住より軽く。むすびばは、阿寒町で暮らしてみるためのシェアハウスです。入居は1か月からですが、数週間の滞在も相談できます。</p>
+      <p>町のお祭りに出る。商店で立ち話をする。持ち寄りのご飯会で、近所の人と同じ鍋をつつく。観光では通り過ぎてしまう町の毎日に、少しだけ混ざってみてください。</p>
+      <p>ここでは、肩書きや経歴はいりません。肩ひじを張らずに、ひとりの人として町の人とつながれる。それが、むすびばでいちばん届けたいものです。</p>
+    </div>
+    <div class="ph tall">写真:持ち寄りのご飯会、入居者と地域の人</div>
+  </div>
+</section>
+
+<section id="what" class="band">
   <div class="wrap">
-    <h2>阿寒暮らし体験を行う、地域と人のむすびば。</h2>
-    <p>むすびばは、釧路市阿寒町にあるシェアハウスです。観光で通り過ぎるのではなく、ひと月、ふた月と町に暮らしてみる場所です。</p>
-    <p>町のお祭りに出る。近所の人と立ち話をする。持ち寄りでご飯会をする。そうしているうちに、いつの間にか名前で呼ばれるようになっている。そんな暮らしを、まずは体験しに来てください。</p>
-    <p>仕事を探しに来る場所ではありません。暮らしと人に会いに来る場所です。</p>
+    <h2>むすびばで、手に入るもの。</h2>
+    <div class="three">
+      <div>
+        <div class="ph">写真:リビングとサウナ</div>
+        <p class="kicker">住まい</p>
+        <h3>身ひとつで始められる家</h3>
+        <p>家具、光回線、サウナまでそろった一軒家。光熱費も込みの月額制です。</p>
+      </div>
+      <div>
+        <div class="ph">写真:地域行事に参加する様子</div>
+        <p class="kicker">つながり</p>
+        <h3>町の人との、ちょうどいい距離</h3>
+        <p>行事やご飯会を通して、町の人と知り合えます。来る人を拒まず、去る人を追わない町です。</p>
+      </div>
+      <div>
+        <div class="ph">写真:DIYや地域のお手伝い</div>
+        <p class="kicker">きっかけ</p>
+        <h3>やってみたいことの、最初の一歩</h3>
+        <p>地域のお手伝いや仕事、空き家や空き店舗の活用まで。暮らしながら、次の一歩を探せます。</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="for">
   <div class="wrap">
-    <h2>こんな人に来てほしい</h2>
-    <ul class="plain">
-      <li>都会での仕事や人間関係に少し疲れて、次を決める前に立ち止まりたい人</li>
-      <li>休職中、転職の合間、季節の仕事を渡り歩いている途中の人</li>
-      <li>ゲストハウスで知らない人と話すのが好きな人</li>
-      <li>自然の近くで、リモートワークや二拠点の暮らしを試してみたい人</li>
-      <li>いつか地方で何かを始めてみたいけれど、まずは住んでみてから考えたい人</li>
-    </ul>
-    <p class="note" style="margin-top:1.4rem">静かに一人で過ごしたいだけの人には、合わないかもしれません。共用のリビングや食卓で顔を合わせるのが、むすびばの日常です。</p>
+    <h2>こんな人を、待っています。</h2>
+    <p class="sub">旅人、学生、会社員、フリーランス。いろんな人が暮らしています。</p>
+    <div class="people">
+      <div class="person"><b>ちょっと立ち止まりたい人</b><span>都会の仕事や人間関係に疲れて、次を決める前に深呼吸したい。</span></div>
+      <div class="person"><b>旅のあいだにいる人</b><span>休職中、転職の合間、リゾートバイトの次の行き先を探している。</span></div>
+      <div class="person"><b>ゲストハウスが好きな人</b><span>知らない人と食卓を囲むのが楽しい。人との出会いが旅の目的。</span></div>
+      <div class="person"><b>何かを始めたい人</b><span>いつか地方で挑戦してみたい。でも、まずは住んでみてから考えたい。</span></div>
+    </div>
   </div>
 </section>
 
-<section id="akan">
+<section id="akan" class="band">
   <div class="wrap">
-    <h2>阿寒の暮らし</h2>
-    <div class="two">
-      <div>
+    <h2><span class="nb">阿寒の、いいところと、</span><span class="nb">そうでもないところ。</span></h2>
+    <p class="sub">いいところだけを書くのはやめました。来てから「思ってたのと違う」とならないように。</p>
+    <div class="honest">
+      <div class="good">
         <h3>いいところ</h3>
-        <ul class="plain">
-          <li>人口約2,700人(阿寒本町地区)。来る人を拒まず、去る人を追わない距離感</li>
-          <li>町なかを動物や鳥が歩く。ゴルフ、釣り、スキーも近く、人混みがない</li>
-          <li>空き家や空き店舗があり、小さく何かを始めやすい</li>
-          <li>釧路空港に近く、リモートワークや二拠点の暮らしと相性がいい</li>
+        <ul>
+          <li>人口約2,700人(阿寒本町地区)。行事に一度顔を出せば、もう顔見知り</li>
+          <li>町なかを鳥や動物が歩いている</li>
+          <li>スキー、釣り、ゴルフが近い</li>
+          <li>どこへ行っても人混みがない</li>
+          <li>釧路空港が近く、リモートワークや二拠点の暮らしにも向いている</li>
         </ul>
       </div>
-      <div>
-        <h3>正直に伝えたいところ</h3>
-        <ul class="plain">
-          <li>冬は雪と寒さのある、本物の北海道の冬</li>
-          <li>空港や釧路駅へのバスは1日3〜4本程度。車があると便利</li>
-          <li>町の規模のわりにお店は少なめ</li>
+      <div class="meh">
+        <h3>そうでもないところ</h3>
+        <ul>
+          <li>冬はしっかり寒い(雪はほとんど降りません)</li>
+          <li>空港行きのバスは1日3〜4本。車があると行動範囲が広がる</li>
           <li>若い人はまだ少ない。だからこそ、来た人の存在が町に届きやすい</li>
         </ul>
       </div>
     </div>
-    <div class="photo">写真:町を歩く鳥や動物、地域の行事、雪の町並み</div>
+    <div class="gallery">
+      <div class="ph">写真:町の風景・空</div>
+      <div class="ph">写真:町を歩く鳥や動物</div>
+      <div class="ph">写真:冬の町並み</div>
+    </div>
+  </div>
+</section>
+
+<section id="living">
+  <div class="wrap living">
+    <div class="ph wide">写真:リビング(ストーブとソファ、みんなが集まる様子)</div>
+    <div class="living-text">
+      <h2>火のまわりに、人が集まる。</h2>
+      <p>むすびばの自慢は、広いリビングです。この冬からはペレットストーブを置く予定。炎のゆらめきに誘われて、気づけばみんなが集まってきます。</p>
+      <p>ご飯を囲んだり、ソファでくつろいだり、週末の行き先を相談したり。滞在した人がいちばん気に入っていたのも、このリビングでした。</p>
+      <ul class="spots">
+        <li><b>サウナ</b>北海道の澄んだ空気で外気浴を</li>
+        <li><b>キッチン</b>持ち寄りのご飯会はここから</li>
+        <li><b>ガレージ</b>電動シャッター付き。自転車やバイクも雨に濡れない</li>
+        <li><b>ランドリールーム</b>長期の滞在も身軽に</li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <section id="rooms">
   <div class="wrap">
     <h2>部屋と料金</h2>
-    <p>入居は1か月以上から。料金には光熱費・管理費・Wi-Fi(光回線)がすべて含まれています。</p>
-    <div class="table">
-      <table>
-        <thead><tr><th>部屋</th><th>広さ</th><th>1人あたり月額</th></tr></thead>
-        <tbody>
-          <tr><td>1人部屋</td><td>6畳</td><td class="price">55,000円</td></tr>
-          <tr><td>2人部屋(相部屋)</td><td>10畳</td><td class="price">45,000円</td></tr>
-          <tr><td>2〜3人部屋(相部屋)</td><td>12畳</td><td class="price">45,000円</td></tr>
-        </tbody>
-      </table>
+    <p class="sub">寝室はシンプルに。暮らしの中心はリビングです。</p>
+    <p>入居は1か月から。数週間だけ暮らしてみたい人も、あきらめずにまず相談してください。表示はすべて1人あたりの月額です。</p>
+    <div class="rooms">
+      <div class="room">
+        <h3>1人部屋</h3><p class="size">6畳</p>
+        <p class="price">55,000円<small>/月</small></p>
+      </div>
+      <div class="room">
+        <h3>2人部屋(相部屋)</h3><p class="size">10畳</p>
+        <p class="price">45,000円<small>/月</small></p>
+      </div>
+      <div class="room">
+        <h3>2〜3人部屋(相部屋)</h3><p class="size">12畳</p>
+        <p class="price">45,000円<small>/月</small></p>
+      </div>
     </div>
-    <ul class="plain">
-      <li>カップルで入居の場合:2人部屋は1人45,000円ずつ、1人部屋に2人なら2人で70,000円</li>
-      <li>1か月未満の短期滞在はご相談ください</li>
-      <li>地域のお手伝い(週10時間程度)と引き換えに、家賃無料で滞在できる枠を設けることがあります。枠の有無は時期によって変わるため、お問い合わせください</li>
-    </ul>
-
-    <h3>設備</h3>
-    <ul class="plain">
-      <li>共用:キッチン、リビング、風呂、トイレ、サウナ、ランドリールーム、ガレージ(自転車・アウトドア用品を置けます)</li>
-      <li>家具はすべてそろっています。身の回りの物があれば、その日から暮らせます</li>
-      <li>寝具:マットレス、枕、布団、毛布あり。シーツはご持参ください(中古の貸し出しは滞在中1,000円)</li>
-    </ul>
-
-    <h3>暮らしのルール</h3>
-    <ul class="plain">
-      <li>男女混在のシェアハウスです(部屋は男女別)</li>
-      <li>喫煙は屋外のみ。ペットは原則不可(音や匂いの出ない生き物はご相談ください)</li>
-      <li>リモートワーク歓迎。食事は各自で用意し、ときどき持ち寄りのご飯会をしています</li>
-      <li>退去は2週間前までにお知らせください</li>
-    </ul>
-    <div class="photo">写真:各部屋、リビング、キッチン、サウナ</div>
+    <div class="inc">
+      <p><b>料金に含まれるもの:</b>家賃、光熱費、管理費、Wi-Fi(光回線)</p>
+      <p>カップルの場合は、2人部屋なら1人45,000円ずつ、1人部屋に2人なら2人で70,000円。数週間など1か月未満の滞在も、空き状況にあわせて相談に乗ります。</p>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>家にあるもの</h3>
+        <ul>
+          <li>リビング、キッチン、風呂、トイレ、ランドリールーム、サウナ、ガレージ</li>
+          <li>各部屋に灯油ストーブ。リビングにはペレットストーブ(設置予定)</li>
+          <li>家具一式。マットレス、枕、布団、毛布</li>
+          <li>シーツは持参してください(中古の貸し出しは滞在中1,000円)</li>
+        </ul>
+      </div>
+      <div>
+        <h3>暮らしのルール</h3>
+        <ul>
+          <li>男女混在のシェアハウス(部屋は男女別)</li>
+          <li>喫煙は屋外のみ</li>
+          <li>ペットは不可</li>
+          <li>リモートワーク歓迎</li>
+          <li>食事は各自で。ときどき持ち寄りのご飯会があります</li>
+          <li>退去は2週間前までにお知らせください</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="voices">
+<section id="exchange" class="exchange">
+  <div class="wrap narrow">
+    <h2><span class="nb">暮らしと、</span><span class="nb">手を貸すことを</span><span class="nb">交換する。</span></h2>
+    <p>阿寒には、人の手を必要としている仕事があります。空き家の改修、宿の清掃、町の行事の準備。</p>
+    <div class="eq"><span>週10時間ほどのお手伝い</span>=<span>家賃・光熱費が無料</span></div>
+    <p>時期によっては、こうした地域のお手伝いと引き換えに、家賃無料で暮らせる枠を設けることがあります。枠の有無は時期によって変わるので、気になる人は相談してください。</p>
+  </div>
+</section>
+
+<section id="voices" class="band">
   <div class="wrap">
-    <h2>滞在した人の声</h2>
-    <p>これまでに6人がむすびばに滞在しました。</p>
+    <h2>暮らした人の声</h2>
     <div class="voices">
-      <blockquote><span class="todo">【本人の言葉を1〜2文】</span><cite>くるみちゃん/旅人・ライダー</cite></blockquote>
-      <blockquote><span class="todo">【本人の言葉を1〜2文】</span><cite>かのんちゃん/フリーランス・学生</cite></blockquote>
-      <blockquote><span class="todo">【本人の言葉を1〜2文】</span><cite>なおやくん/会社員</cite></blockquote>
+      <div class="voice"><div class="ph">写真</div><p>シェアハウスで出会った子と、花咲線で2泊3日の旅に出ました。1人だったら、きっと行かなかったと思います。</p><cite>くるみちゃん/旅人・ライダー</cite></div>
+      <div class="voice"><div class="ph">写真</div><p>年齢に関係なく、地域のいろんな人と交流できて楽しかった。思わず1週間延長してしまうほどの滞在でした。</p><cite>かのんちゃん/フリーランス・学生</cite></div>
+      <div class="voice"><div class="ph">写真</div><p>みんなで壁を塗ったのが楽しかった。思っていたより釧路に近くて、住みやすそう。次は冬に来たいです。</p><cite>なおやくん/会社員</cite></div>
     </div>
-    <p style="margin-top:1.4rem"><a href="https://www.instagram.com/akan_masakun/" target="_blank" rel="noopener">滞在記をInstagramで読む</a></p>
+    <p style="margin-top:1.6rem"><a href="https://www.instagram.com/akan_masakun/" target="_blank" rel="noopener">滞在記の続きはInstagramで</a></p>
   </div>
 </section>
 
 <section id="host">
-  <div class="wrap">
-    <h2>管理人より</h2>
-    <p><b>西本将来(にしもと・まさき)</b></p>
-    <p>釧路市阿寒町で地域おこし協力隊として、空き家の活用と移住の相談を担当しています。むすびばは、私自身が暮らしている家です。<span class="todo">【出身地・移住の経緯を1文】</span></p>
-    <p>阿寒に来て感じたのは、この町では一人ひとりがちゃんと見えている、ということでした。行事に出れば声をかけられ、名前を覚えてもらえる。その心地よさを、都会で少し疲れた人に味わってほしくて、むすびばを始めました。</p>
-    <p>いつかこの町で、小さなお店や新しい挑戦が次々に生まれてほしいと思っています。まずは暮らしてみて、阿寒のいいところも、そうでないところも見てください。</p>
+  <div class="wrap host">
+    <div class="ph tall">写真:西本さん</div>
+    <div>
+      <h2>管理人も、ここで暮らしています。</h2>
+      <p><b>西本将来(にしもと・まさき)</b> 釧路市阿寒町の地域おこし協力隊として、空き家の活用と移住の相談を担当しています。広島で育ち、大学進学を機に上京。東京のITベンチャーで、地方の事業者を支える仕事をしていました。阿寒との出会いは学生時代、原付で北海道を旅していたときのこと。阿寒町の近くでバイクが故障し、町の人に助けられたのがはじまりです。それから毎年通うようになり、2025年9月に移住しました。</p>
+      <p>阿寒に来て感じたのは、ここでは肩ひじを張らなくていい、ということでした。肩書きや経歴を抜きにして、ひとりの人として迎えてもらえる。それは、この町の人たちのあたたかさがあってこそです。その心地よさを、都会で少し疲れた人にも味わってほしくて、むすびばを始めました。</p>
+      <p>いつかこの町で、小さなお店や新しい挑戦が次々に生まれてほしい。そのはじめの一歩として、まずは暮らしに来てください。</p>
+    </div>
   </div>
 </section>
 
-<section id="faq">
-  <div class="wrap">
+<section id="faq" class="band">
+  <div class="wrap narrow">
     <h2>よくある質問</h2>
     <details><summary>仕事がなくても入居できますか?</summary><p>できます。休職中や転職の合間に来る人もいます。地域の仕事やお手伝いを探したい人には、つながりのある農家・お店・宿泊施設などを紹介できる場合があります(求人の状況によります)。</p></details>
-    <details><summary>車がなくても暮らせますか?</summary><p>暮らせます。町内にコンビニやスーパーがあり、空港・釧路駅へはバスが1日3〜4本程度あります。町内にはレンタカーやレンタサイクルを扱う事業者もあります。</p></details>
+    <details><summary>車がなくても暮らせますか?</summary><p>暮らせます。町内にコンビニやスーパーがあり、釧路空港へはバスで約20分(1日3〜4本)、JR釧路駅へは約1時間です。町内にはレンタカーやレンタサイクルを扱う事業者もあります。</p></details>
     <details><summary>どんな人が住んでいますか?</summary><p>これまでに旅人、学生、会社員、フリーランス、リモートワーカーなどが滞在しました。管理人も同じ家に住んでいます。</p></details>
-    <details><summary>冬でも大丈夫ですか?</summary><p>寒さと雪はありますが、<span class="todo">【暖房の設備】</span>。冬の北海道の暮らしを体験したい人には、むしろいい季節です。</p></details>
-    <details><summary>入居の前に見学できますか?</summary><p>オンラインでの面談や、現地の見学をご相談ください。</p></details>
+    <details><summary>冬でも大丈夫ですか?</summary><p>しっかり寒くなりますが、雪はほとんど降りません。各部屋に灯油ストーブがあり、リビングにはペレットストーブを置く予定です。冬の北海道を体験したい人には、むしろいい季節です。</p></details>
+    <details><summary>数週間だけの滞在でもいいですか?</summary><p>入居は1か月からが基本ですが、数週間の滞在も空き状況にあわせて相談に乗ります。まずは気軽に連絡してください。</p></details>
+    <details><summary>直前でも申し込めますか?</summary><p>空きがあれば、入居の直前でも大丈夫です。まずは気軽に相談してください。</p></details>
+    <details><summary>入居の前に見学できますか?</summary><p>オンラインでの面談や、現地の見学ができます。相談のときに希望を伝えてください。</p></details>
     <details><summary>将来、阿寒で起業や移住をしたい場合も相談できますか?</summary><p>はい。管理人は空き家の活用と移住の相談を担当しています。暮らしながら一緒に考えましょう。</p></details>
   </div>
 </section>
 
-<section id="access">
-  <div class="wrap">
-    <h2>アクセス</h2>
-    <ul class="plain">
-      <li>北海道釧路市阿寒町(詳しい住所は、お申し込み後にお伝えします)</li>
-      <li>釧路空港から阿寒バスで<span class="todo">【所要時間】</span></li>
-      <li>JR釧路駅から阿寒バスで<span class="todo">【所要時間】</span></li>
-    </ul>
-  </div>
-</section>
-
 <section id="apply">
-  <div class="wrap cta">
-    <h2>申し込みの流れ</h2>
-    <ol class="steps">
-      <li>申込フォームから、入居の相談を送る</li>
-      <li>管理人から<span class="todo">【3日】</span>以内に連絡</li>
-      <li>オンライン面談(30分ほど)で、暮らし方や希望をすり合わせる</li>
-      <li>入居日と部屋を決めて、契約</li>
-      <li>入居。阿寒での暮らしが始まります</li>
+  <div class="wrap">
+    <h2>入居までの流れ</h2>
+    <ol class="flow">
+      <li><b>相談する</b>フォームから送ってください。管理人から1日程度で返信します。</li>
+      <li><b>話してみる</b>オンラインで30分ほど。暮らし方や希望をすり合わせます。</li>
+      <li><b>暮らしはじめる</b>入居日と部屋を決めて契約。阿寒での暮らしが始まります。</li>
     </ol>
-    <p>2027年1月入居の申し込みは、<span class="todo">【2026年12月20日】</span>まで受け付けています。</p>
-    <p><a class="btn" href="FORM_URL" target="_blank" rel="noopener">入居の相談をする</a></p>
+    <p class="sub">アクセス:北海道釧路市阿寒町(詳しい住所は申し込み後にお伝えします)。阿寒バスで釧路空港から約20分、JR釧路駅前から約1時間(<a href="https://www.akanbus.co.jp/route/" target="_blank" rel="noopener">時刻表</a>)。</p>
+    <div class="final">
+      <h2 style="margin-top:3.5rem">まずは、ひと月。</h2>
+      <a class="btn sun" href="https://docs.google.com/forms/d/e/1FAIpQLSfh2URaJs0p1q-b7uz_g9CNVXAaE6Cpme1CMsqIKFfo1lqntw/viewform" target="_blank" rel="noopener">入居の相談をする</a>
+    </div>
   </div>
 </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <p><a href="https://www.instagram.com/akan_masakun/" target="_blank" rel="noopener">Instagram @akan_masakun</a><a href="https://linktr.ee/akan.nishimoto" target="_blank" rel="noopener">Linktree</a></p>
     <p>むすびばシェアハウス 北海道釧路市阿寒町</p>
+    <p><a href="https://www.instagram.com/akan_masakun/" target="_blank" rel="noopener">Instagram</a><a href="https://linktr.ee/akan.nishimoto" target="_blank" rel="noopener">Linktree</a></p>
   </div>
 </footer>
 </body>
