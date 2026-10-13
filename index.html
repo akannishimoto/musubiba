@@ -74,6 +74,25 @@ section{padding-block:5.5rem}
 .ph.tall{aspect-ratio:3/4}
 .ph.wide{aspect-ratio:16/9}
 
+/* photos */
+.pic{position:relative;margin:0;border-radius:18px;overflow:hidden;aspect-ratio:4/3;background:var(--sky-soft);max-width:100%}
+.pic.tall{aspect-ratio:3/4}
+.pic.wide{aspect-ratio:4/3}
+.pic img{width:100%;height:100%;object-fit:cover;display:block}
+.pic .tag{position:absolute;right:.6rem;bottom:.6rem;background:rgba(42,42,39,.62);color:#F3EEE4;font-size:.72rem;padding:.15rem .55rem;border-radius:999px}
+.three .pic{margin-bottom:1rem}
+.gallery .pic{aspect-ratio:auto;min-height:12rem}
+.host .pic{max-width:16rem}
+.initial{display:grid;place-items:center;width:3.2rem;height:3.2rem;border-radius:50%;background:var(--sky);color:#F3EEE4;font-family:var(--round);font-size:1.4rem}
+
+/* notes */
+.notes{list-style:none;margin:2rem 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.notes li{min-width:0}
+.notes a{display:block;height:100%;box-sizing:border-box;background:var(--card);border-radius:18px;padding:1.2rem 1.4rem;color:var(--ink);text-decoration:none;border-left:4px solid var(--sun)}
+.notes a:hover{outline:2px solid var(--sun)}
+.notes small{display:block;color:var(--muted);font-size:.8rem;margin-bottom:.3rem}
+.notes b{font-family:var(--round);font-weight:400;font-size:1.02rem;line-height:1.6}
+@media (max-width:720px){.notes{grid-template-columns:1fr}}
 /* three things */
 .three{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:2.4rem}
 .three>div{min-width:0}
@@ -176,7 +195,7 @@ footer a{margin-right:1.2rem}
 <!--
   差し替えメモ
   ・申込フォームのURL:「https://docs.google.com/forms/d/e/1FAIpQLSfh2URaJs0p1q-b7uz_g9CNVXAaE6Cpme1CMsqIKFfo1lqntw/viewform」を検索し、3か所すべて置き換える
-  ・写真:class="ph" の枠を <img src="images/ファイル名.jpg" alt="説明" class="ph"> に置き換える
+  ・写真:images/ に自分の写真を入れ、class="tag"(イメージ表示)付きのUnsplash写真を順次差し替える
   ・赤字(class="todo")の箇所を埋める
 -->
 
@@ -208,7 +227,7 @@ footer a{margin-right:1.2rem}
       <p>町のお祭りに出る。商店で立ち話をする。持ち寄りのご飯会で、近所の人と同じ鍋をつつく。観光では通り過ぎてしまう町の毎日に、少しだけ混ざってみてください。</p>
       <p>ここでは、肩書きや経歴はいりません。肩ひじを張らずに、ひとりの人として町の人とつながれる。それが、むすびばでいちばん届けたいものです。</p>
     </div>
-    <div class="ph tall">写真:持ち寄りのご飯会、入居者と地域の人</div>
+    <figure class="pic tall"><img src="https://images.unsplash.com/photo-1659690402718-ea07d943fd42?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="食卓を囲む人たち" loading="lazy"><span class="tag">イメージ</span></figure>
   </div>
 </section>
 
@@ -217,19 +236,19 @@ footer a{margin-right:1.2rem}
     <h2>むすびばで、手に入るもの。</h2>
     <div class="three">
       <div>
-        <div class="ph">写真:リビングとサウナ</div>
+        <figure class="pic "><img src="living.jpg" alt="むすびばのリビング" loading="lazy" style="object-position:70% 60%"></figure>
         <p class="kicker">住まい</p>
         <h3>身ひとつで始められる家</h3>
         <p>家具、光回線、サウナまでそろった一軒家。光熱費も込みの月額制です。</p>
       </div>
       <div>
-        <div class="ph">写真:地域行事に参加する様子</div>
+        <figure class="pic "><img src="https://images.unsplash.com/photo-1585568954609-f1d5b24728e7?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="お祭りの様子" loading="lazy"><span class="tag">イメージ</span></figure>
         <p class="kicker">つながり</p>
         <h3>町の人との、ちょうどいい距離</h3>
         <p>行事やご飯会を通して、町の人と知り合えます。来る人を拒まず、去る人を追わない町です。</p>
       </div>
       <div>
-        <div class="ph">写真:DIYや地域のお手伝い</div>
+        <figure class="pic "><img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="壁を塗るDIYの様子" loading="lazy"><span class="tag">イメージ</span></figure>
         <p class="kicker">きっかけ</p>
         <h3>やってみたいことの、最初の一歩</h3>
         <p>地域のお手伝いや仕事、空き家や空き店舗の活用まで。暮らしながら、次の一歩を探せます。</p>
@@ -276,16 +295,36 @@ footer a{margin-right:1.2rem}
       </div>
     </div>
     <div class="gallery">
-      <div class="ph">写真:町の風景・空</div>
-      <div class="ph">写真:町を歩く鳥や動物</div>
-      <div class="ph">写真:冬の町並み</div>
+      <figure class="pic "><img src="https://images.unsplash.com/photo-1757847109975-7130ab16ddc3?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="阿寒湖と森の風景" loading="lazy"><span class="tag">イメージ</span></figure>
+      <figure class="pic "><img src="https://images.unsplash.com/photo-1759146782960-d5f6ed4d79f3?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="タンチョウ" loading="lazy"><span class="tag">イメージ</span></figure>
+      <figure class="pic "><img src="https://images.unsplash.com/photo-1762356201977-b32cf6f2ace1?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="冬の森と雄阿寒岳" loading="lazy"><span class="tag">イメージ</span></figure>
     </div>
+  </div>
+</section>
+
+<section id="town">
+  <div class="wrap">
+    <h2><span class="nb">阿寒のこと、</span><span class="nb">もう少し知りたい人へ。</span></h2>
+    <p>管理人が、移住してから見たこと・考えたことを note に書いています。町の空気を知るきっかけにどうぞ。</p>
+<!-- 町で動いている人たち(掲載するご本人の了承が取れたら、コメントを外して公開)
+    <h3>町で、動いている人たち</h3>
+    <div class="people">
+      <div class="person"><b>お名前/屋号</b><span>どんなことをしている人か(1〜2行)</span><br><a href="#">Instagram など</a></div>
+    </div>
+-->
+    <ul class="notes">
+      <li><a href="https://note.com/akan_masakun/n/nc335d06aa2e8" target="_blank" rel="noopener"><small>2025.11.05</small><b>東京のITベンチャーを辞めて、北海道の小さな田舎町に移住した理由</b></a></li>
+      <li><a href="https://note.com/akan_masakun/n/n5b5df18219ae" target="_blank" rel="noopener"><small>2025.11.16</small><b>釧路・阿寒町には、5つの隠れたポテンシャルがある</b></a></li>
+      <li><a href="https://note.com/akan_masakun/n/nd971e25cf6f3" target="_blank" rel="noopener"><small>2025.11.08</small><b>釧路市阿寒で鹿肉丼を味わい考えた、ジビエと環境問題のこれから</b></a></li>
+      <li><a href="https://note.com/akan_masakun/n/n449856c712d4" target="_blank" rel="noopener"><small>2026.10.06</small><b>幸せをミニマルにほどく――田舎暮らしで「無駄を楽しむ余白」を手に入れるまで</b></a></li>
+    </ul>
+    <p style="margin-top:1.4rem"><a href="https://note.com/akan_masakun" target="_blank" rel="noopener">note の記事をすべて見る</a></p>
   </div>
 </section>
 
 <section id="living">
   <div class="wrap living">
-    <div class="ph wide">写真:リビング(ストーブとソファ、みんなが集まる様子)</div>
+    <figure class="pic wide"><img src="living.jpg" alt="むすびばのリビング。ソファと大きな窓" loading="lazy" style="object-position:60% 55%"></figure>
     <div class="living-text">
       <h2>火のまわりに、人が集まる。</h2>
       <p>むすびばの自慢は、広いリビングです。この冬からはペレットストーブを置く予定。炎のゆらめきに誘われて、気づけばみんなが集まってきます。</p>
@@ -361,9 +400,9 @@ footer a{margin-right:1.2rem}
   <div class="wrap">
     <h2>暮らした人の声</h2>
     <div class="voices">
-      <div class="voice"><div class="ph">写真</div><p>シェアハウスで出会った子と、花咲線で2泊3日の旅に出ました。1人だったら、きっと行かなかったと思います。</p><cite>くるみちゃん/旅人・ライダー</cite></div>
-      <div class="voice"><div class="ph">写真</div><p>年齢に関係なく、地域のいろんな人と交流できて楽しかった。思わず1週間延長してしまうほどの滞在でした。</p><cite>かのんちゃん/フリーランス・学生</cite></div>
-      <div class="voice"><div class="ph">写真</div><p>みんなで壁を塗ったのが楽しかった。思っていたより釧路に近くて、住みやすそう。次は冬に来たいです。</p><cite>なおやくん/会社員</cite></div>
+      <div class="voice"><span class="initial">く</span><p>シェアハウスで出会った子と、花咲線で2泊3日の旅に出ました。1人だったら、きっと行かなかったと思います。</p><cite>くるみちゃん/旅人・ライダー</cite></div>
+      <div class="voice"><span class="initial">か</span><p>年齢に関係なく、地域のいろんな人と交流できて楽しかった。思わず1週間延長してしまうほどの滞在でした。</p><cite>かのんちゃん/フリーランス・学生</cite></div>
+      <div class="voice"><span class="initial">な</span><p>みんなで壁を塗ったのが楽しかった。思っていたより釧路に近くて、住みやすそう。次は冬に来たいです。</p><cite>なおやくん/会社員</cite></div>
     </div>
     <p style="margin-top:1.6rem"><a href="https://www.instagram.com/akan_masakun/" target="_blank" rel="noopener">滞在記の続きはInstagramで</a></p>
   </div>
@@ -371,7 +410,7 @@ footer a{margin-right:1.2rem}
 
 <section id="host">
   <div class="wrap host">
-    <div class="ph tall">写真:西本さん</div>
+    <figure class="pic tall"><img src="living-kitchen.jpg" alt="むすびばのダイニングとキッチン" loading="lazy" style="object-position:55% 50%"></figure>
     <div>
       <h2>管理人も、ここで暮らしています。</h2>
       <p><b>西本将来(にしもと・まさき)</b> 釧路市阿寒町の地域おこし協力隊として、空き家の活用と移住の相談を担当しています。広島で育ち、大学進学を機に上京。東京のITベンチャーで、地方の事業者を支える仕事をしていました。阿寒との出会いは学生時代、原付で北海道を旅していたときのこと。阿寒町の近くでバイクが故障し、町の人に助けられたのがはじまりです。それから毎年通うようになり、2025年9月に移住しました。</p>
@@ -414,8 +453,8 @@ footer a{margin-right:1.2rem}
 
 <footer>
   <div class="wrap">
-    <p>むすびばシェアハウス 北海道釧路市阿寒町</p>
-    <p><a href="https://www.instagram.com/akan_masakun/" target="_blank" rel="noopener">Instagram</a><a href="https://linktr.ee/akan.nishimoto" target="_blank" rel="noopener">Linktree</a></p>
+    <p>むすびばシェアハウス 北海道釧路市阿寒町<br><small>「イメージ」の写真は <a href="https://unsplash.com/" target="_blank" rel="noopener">Unsplash</a> より(Andrew Amelianovich、enkuu smile、Theme Photos、Gabriele Girelli、Bo Zhang、Da-shika)</small></p>
+    <p><a href="https://www.instagram.com/akan_masakun/" target="_blank" rel="noopener">Instagram</a><a href="https://note.com/akan_masakun" target="_blank" rel="noopener">note</a><a href="https://linktr.ee/akan.nishimoto" target="_blank" rel="noopener">Linktree</a></p>
   </div>
 </footer>
 </body>
