@@ -141,6 +141,7 @@ section{padding-block:5.5rem}
 .living>div{min-width:0}
 .living .ph.wide{aspect-ratio:4/3}
 .spots-wrap{margin-top:2.6rem}
+#voices .spots-head{margin-top:1.6rem}
 .spots-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;margin-bottom:.8rem}
 .spots-head .kicker{margin:0}
 .spots-nav{display:flex;gap:.5rem}
@@ -173,8 +174,10 @@ section{padding-block:5.5rem}
 .exchange .eq span{white-space:nowrap;background:var(--sun);color:#1C2B3A;padding:.5rem 1.2rem;border-radius:999px}
 
 /* voices */
-.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem}
-.voice{background:var(--card);border-radius:18px;padding:1.4rem;min-width:0;display:flex;flex-direction:column;gap:.8rem}
+.voice{scroll-snap-align:start;background:var(--card);border-radius:18px;padding:1.2rem;min-width:0;display:flex;flex-direction:column;gap:.8rem}
+.voice .pic{border-radius:12px}
+.voice p{margin:0;color:var(--ink)}
+.voice-more{margin-top:auto;font-size:.88rem}
 .voice .ph{aspect-ratio:1;border-radius:12px}
 .voice cite{font-style:normal;font-size:.9rem;color:var(--muted)}
 
@@ -205,7 +208,7 @@ footer a{margin-right:1.2rem}
 @media (max-width:760px){
   section{padding-block:4rem}
   .intro,.honest,.cols,.host,.living{grid-template-columns:1fr;gap:2rem}
-  .three,.rooms,.voices,.flow,.people{grid-template-columns:1fr}
+  .three,.rooms,.flow,.people{grid-template-columns:1fr}
   .gallery{grid-template-columns:1fr 1fr}
   .gallery .ph:first-child{grid-column:1/-1}
   .host .ph{max-width:14rem}
@@ -448,11 +451,33 @@ footer a{margin-right:1.2rem}
 <section id="voices" class="band">
   <div class="wrap">
     <h2>暮らした人の声</h2>
-    <div class="voices">
-      <div class="voice"><span class="initial">く</span><p>シェアハウスで出会った子と、花咲線で2泊3日の旅に出ました。1人だったら、きっと行かなかったと思います。</p><cite>くるみちゃん/旅人・ライダー</cite></div>
-      <div class="voice"><span class="initial">か</span><p>年齢に関係なく、地域のいろんな人と交流できて楽しかった。思わず1週間延長してしまうほどの滞在でした。</p><cite>かのんちゃん/フリーランス・学生</cite></div>
-      <div class="voice"><span class="initial">な</span><p>みんなで壁を塗ったのが楽しかった。思っていたより釧路に近くて、住みやすそう。次は冬に来たいです。</p><cite>なおやくん/会社員</cite></div>
+    <div class="spots-head">
+      <p class="kicker">滞在インタビューより</p>
+      <div class="spots-nav">
+        <button type="button" class="spots-btn" data-dir="-1" aria-label="前へ">&#8592;</button>
+        <button type="button" class="spots-btn" data-dir="1" aria-label="次へ">&#8594;</button>
+      </div>
     </div>
+    <ul class="spots voices" aria-label="暮らした人の声">
+        <li class="voice">
+          <figure class="pic"><img src="voice-kurumi.jpg" alt="くるみちゃん" loading="lazy"></figure>
+          <p>シェアハウスで出会った子と、花咲線で2泊3日の旅に出ました。1人だったら、きっと行かなかったと思います。</p>
+          <cite>くるみちゃん/旅人・ライダー</cite>
+          <a class="voice-more" href="https://www.instagram.com/p/Dc0PRxlD4HA/" target="_blank" rel="noopener">滞在インタビューを読む</a>
+        </li>
+        <li class="voice">
+          <figure class="pic"><img src="voice-kanon.jpg" alt="かのんちゃん" loading="lazy"></figure>
+          <p>年齢に関係なく、地域のいろんな人と交流できて楽しかった。思わず1週間延長してしまうほどの滞在でした。</p>
+          <cite>かのんちゃん/フリーランス・学生</cite>
+          <a class="voice-more" href="https://www.instagram.com/p/DcqEs32jzMN/" target="_blank" rel="noopener">滞在インタビューを読む</a>
+        </li>
+        <li class="voice">
+          <figure class="pic"><img src="voice-naoya.jpg" alt="なおやくん" loading="lazy"></figure>
+          <p>みんなで壁を塗ったのが楽しかった。思っていたより釧路に近くて、住みやすそう。次は冬に来たいです。</p>
+          <cite>なおやくん/会社員</cite>
+          <a class="voice-more" href="https://www.instagram.com/p/DeEbRv2EiVp/" target="_blank" rel="noopener">滞在インタビューを読む</a>
+        </li>
+    </ul>
     <p style="margin-top:1.6rem"><a href="https://www.instagram.com/akan_masakun/" target="_blank" rel="noopener">滞在記の続きはInstagramで</a></p>
   </div>
 </section>
@@ -507,10 +532,10 @@ footer a{margin-right:1.2rem}
   </div>
 </footer>
 <script>
-(function(){var l=document.getElementById('spots');if(!l)return;var b=document.querySelectorAll('.spots-btn');
+document.querySelectorAll('.spots').forEach(function(l){var h=l.previousElementSibling;if(!h)return;var b=h.querySelectorAll('.spots-btn');if(b.length<2)return;
 function st(){var m=l.scrollWidth-l.clientWidth-2;b[0].disabled=l.scrollLeft<=2;b[1].disabled=l.scrollLeft>=m;}
-b.forEach(function(x){x.addEventListener('click',function(){var c=l.querySelector('.spot');var w=c?c.getBoundingClientRect().width+parseFloat(getComputedStyle(l).columnGap||0):l.clientWidth;l.scrollBy({left:w*Number(x.dataset.dir),behavior:'smooth'});});});
-l.addEventListener('scroll',st,{passive:true});window.addEventListener('resize',st);st();})();
+b.forEach(function(x){x.addEventListener('click',function(){var c=l.firstElementChild;var w=c?c.getBoundingClientRect().width+parseFloat(getComputedStyle(l).columnGap||0):l.clientWidth;l.scrollBy({left:w*Number(x.dataset.dir),behavior:'smooth'});});});
+l.addEventListener('scroll',st,{passive:true});window.addEventListener('resize',st);st();});
 </script>
 </body>
 </html>
