@@ -140,9 +140,18 @@ section{padding-block:5.5rem}
 .living{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;align-items:center}
 .living>div{min-width:0}
 .living .ph.wide{aspect-ratio:4/3}
-.spots{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.4rem}
-.spots li{font-size:.92rem;color:var(--muted);border-top:2px solid var(--sun);padding-top:.6rem;min-width:0}
-.spots b{display:block;font-family:var(--round);color:var(--ink);font-size:1rem}
+.spots-wrap{margin-top:2.6rem}
+.spots-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;margin-bottom:.8rem}
+.spots-head .kicker{margin:0}
+.spots-nav{display:flex;gap:.5rem}
+.spots-btn{width:2.6rem;height:2.6rem;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-size:1.1rem;line-height:1;cursor:pointer}
+.spots-btn:disabled{opacity:.35;cursor:default}
+.spots{list-style:none;margin:0;padding:0 0 .6rem;display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 2.8rem)/3);gap:1.4rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.spot{scroll-snap-align:start;min-width:0;font-size:.92rem;color:var(--muted)}
+.spot .pic{margin-bottom:.7rem}
+.spot b{display:block;font-family:var(--round);color:var(--ink);font-size:1rem;border-top:2px solid var(--sun);padding-top:.5rem}
+.pic.soon{display:grid;place-items:center;color:var(--muted);font-size:.85rem}
+@media (max-width:760px){.spots{grid-auto-columns:78%;gap:1rem}}
 /* rooms */
 .rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin:2rem 0}
 .room{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.2rem;min-width:0}
@@ -344,13 +353,38 @@ footer a{margin-right:1.2rem}
       <h2>火のまわりに、人が集まる。</h2>
       <p>むすびばの自慢は、広いリビングです。この冬からはペレットストーブを置く予定。炎のゆらめきに誘われて、気づけばみんなが集まってきます。</p>
       <p>ご飯を囲んだり、ソファでくつろいだり、週末の行き先を相談したり。滞在した人がいちばん気に入っていたのも、このリビングでした。</p>
-      <ul class="spots">
-        <li><b>サウナ</b>北海道の澄んだ空気で外気浴を</li>
-        <li><b>キッチン</b>持ち寄りのご飯会はここから</li>
-        <li><b>ガレージ</b>電動シャッター付き。自転車やバイクも雨に濡れない</li>
-        <li><b>ランドリールーム</b>長期の滞在も身軽に</li>
-      </ul>
     </div>
+  </div>
+  <div class="wrap spots-wrap">
+    <div class="spots-head">
+      <p class="kicker">共用スペース</p>
+      <div class="spots-nav">
+        <button type="button" class="spots-btn" data-dir="-1" aria-label="前へ">&#8592;</button>
+        <button type="button" class="spots-btn" data-dir="1" aria-label="次へ">&#8594;</button>
+      </div>
+    </div>
+    <ul class="spots" id="spots" aria-label="共用スペースの写真">
+        <li class="spot">
+          <figure class="pic soon" aria-hidden="true"><span>写真は準備中です</span></figure>
+          <b>サウナ</b>
+          <span>北海道の澄んだ空気で外気浴を</span>
+        </li>
+        <li class="spot">
+          <figure class="pic"><img src="kitchen.jpg" alt="むすびばのキッチン。対面カウンターとダイニングテーブル" loading="lazy"></figure>
+          <b>キッチン</b>
+          <span>持ち寄りのご飯会はここから</span>
+        </li>
+        <li class="spot">
+          <figure class="pic soon" aria-hidden="true"><span>写真は準備中です</span></figure>
+          <b>ガレージ</b>
+          <span>電動シャッター付き。自転車やバイクも雨に濡れない</span>
+        </li>
+        <li class="spot">
+          <figure class="pic soon" aria-hidden="true"><span>写真は準備中です</span></figure>
+          <b>ランドリールーム</b>
+          <span>長期の滞在も身軽に</span>
+        </li>
+    </ul>
   </div>
 </section>
 
@@ -472,5 +506,11 @@ footer a{margin-right:1.2rem}
     <p><a href="https://www.instagram.com/musubiba_akan/" target="_blank" rel="noopener">Instagram</a><a href="https://x.com/musubiba_akan" target="_blank" rel="noopener">X</a><a href="https://note.com/akan_masakun" target="_blank" rel="noopener">note</a><a href="https://linktr.ee/akan.nishimoto" target="_blank" rel="noopener">Linktree</a></p>
   </div>
 </footer>
+<script>
+(function(){var l=document.getElementById('spots');if(!l)return;var b=document.querySelectorAll('.spots-btn');
+function st(){var m=l.scrollWidth-l.clientWidth-2;b[0].disabled=l.scrollLeft<=2;b[1].disabled=l.scrollLeft>=m;}
+b.forEach(function(x){x.addEventListener('click',function(){var c=l.querySelector('.spot');var w=c?c.getBoundingClientRect().width+parseFloat(getComputedStyle(l).columnGap||0):l.clientWidth;l.scrollBy({left:w*Number(x.dataset.dir),behavior:'smooth'});});});
+l.addEventListener('scroll',st,{passive:true});window.addEventListener('resize',st);st();})();
+</script>
 </body>
 </html>
