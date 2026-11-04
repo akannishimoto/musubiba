@@ -73,7 +73,8 @@ section{padding-block:5.5rem}
 .logo{display:flex;align-items:center;gap:.7rem;text-decoration:none}
 .logo-svg{display:block;width:auto}
 .logo small{font-size:.8rem;opacity:.85}
-.nav a.navlink{font-family:var(--round);font-weight:400;font-size:.95rem;text-decoration:none;border-bottom:2px solid currentColor}
+.nav a.navlink{font-family:var(--round);font-weight:400;font-size:.95rem;text-decoration:none;background:var(--sun);color:#2A2A27;padding:.4rem 1.1rem;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.nav .logo small{background:var(--sky);color:#F3EEE4;opacity:1;padding:.2rem .7rem;border-radius:999px;font-size:.8rem}
 .hero-body{padding-block:4.5rem 2.5rem;max-width:44rem}
 .hero{position:relative}
 .hero .nav,.hero .hero-body{position:relative;z-index:2}
@@ -195,6 +196,19 @@ section{padding-block:5.5rem}
 .host{display:grid;grid-template-columns:16rem 1fr;gap:3rem;align-items:start}
 .host>div{min-width:0}
 
+/* access */
+.access{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:1.6rem}
+.access>div{min-width:0}
+.access ul{margin:0;padding-left:1.2rem;display:grid;gap:.5rem}
+.map{width:100%;aspect-ratio:4/3;border:0;border-radius:18px;background:var(--sky-soft);display:block}
+.map-cap{font-size:.85rem;color:var(--muted);margin:.4rem 0 1.2rem}
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:2rem 0}
+.case{background:color-mix(in srgb,var(--paper) 10%,transparent);border-radius:18px;padding:1rem;min-width:0}
+.case .pic{margin-bottom:.8rem;border-radius:12px}
+.case .pic.soon{background:color-mix(in srgb,var(--paper) 18%,transparent);color:inherit;opacity:.85}
+.case b{font-family:var(--round);font-weight:400;display:block;font-size:1.05rem;margin-bottom:.2rem}
+.case span{font-size:.92rem;opacity:.85}
+@media (max-width:760px){.access,.cases{grid-template-columns:1fr}}
 /* faq */
 details{border-bottom:1px solid var(--line);padding-block:1.1rem}
 summary{cursor:pointer;font-family:var(--round);font-weight:400;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:1rem}
@@ -268,8 +282,8 @@ footer a{margin-right:1.2rem}
 <section id="about">
   <div class="wrap intro">
     <div>
-      <h2>泊まるでも、移住するでもなく。</h2>
-      <p>ゲストハウスより長く、移住より軽く。むすびばは、阿寒町で暮らしてみるためのシェアハウスです。入居は1か月からですが、数週間の滞在も相談できます。</p>
+      <h2><span class="nb">肩書きをおろして、</span><span class="nb">ただの自分に戻れる町。</span></h2>
+      <p>ゲストハウスより長く、移住より軽く。むすびばは、阿寒町で暮らしてみるためのシェアハウスです。</p>
       <p>町のお祭りに出る。商店で立ち話をする。持ち寄りのご飯会で、近所の人と同じ鍋をつつく。観光では通り過ぎてしまう町の毎日に、少しだけ混ざってみてください。</p>
       <p>ここでは、肩書きや経歴はいりません。肩ひじを張らずに、ひとりの人として町の人とつながれる。それが、むすびばでいちばん届けたいものです。</p>
     </div>
@@ -279,24 +293,24 @@ footer a{margin-right:1.2rem}
 
 <section id="what" class="band">
   <div class="wrap">
-    <h2>むすびばで、手に入るもの。</h2>
+    <h2>ここで暮らすと、手に入るもの。</h2>
     <div class="three">
       <div>
         <figure class="pic "><img src="ldk.jpg" alt="むすびばのLDK。キッチンとダイニング、ソファ" loading="lazy" style="object-position:50% 60%"></figure>
         <p class="kicker">住まい</p>
-        <h3>身ひとつで始められる家</h3>
+        <h3>スーツケースひとつで、今日から暮らせる。</h3>
         <p>家具、光回線、サウナまでそろった一軒家。光熱費も込みの月額制です。</p>
       </div>
       <div>
         <figure class="pic "><img src="tsunagari.jpg" alt="阿寒の夏祭りで神輿を担ぐ町の人たち" loading="lazy" style="object-position:50% 35%"></figure>
         <p class="kicker">つながり</p>
-        <h3>町の人との、ちょうどいい距離</h3>
-        <p>行事やご飯会を通して、町の人と知り合えます。来る人を拒まず、去る人を追わない町です。</p>
+        <h3>名前で呼んでくれる人が、町にできる。</h3>
+        <p>日々の生活や地域の行事を通して、町の人と知り合えます。来る人を拒まず、去る人を追わない町です。</p>
       </div>
       <div>
         <figure class="pic "><img src="kikkake.jpg" alt="阿寒の牧場で搾乳作業をする様子" loading="lazy"></figure>
         <p class="kicker">きっかけ</p>
-        <h3>やってみたいことの、最初の一歩</h3>
+        <h3>「いつか」が、ここで動き出す。</h3>
         <p>地域のお手伝いや仕事、空き家や空き店舗の活用まで。暮らしながら、次の一歩を探せます。</p>
       </div>
     </div>
@@ -325,10 +339,10 @@ footer a{margin-right:1.2rem}
         <h3>いいところ</h3>
         <ul>
           <li>人口約2,700人(阿寒本町地区)。行事に一度顔を出せば、もう顔見知り</li>
-          <li>町なかを鳥や動物が歩いている</li>
+          <li>北海道ならではの動物との出会い</li>
           <li>スキー、釣り、ゴルフが近い</li>
           <li>どこへ行っても人混みがない</li>
-          <li>釧路空港が近く、リモートワークや二拠点の暮らしにも向いている</li>
+          <li>釧路空港が近く、リモートワークや二拠点の暮らしにも</li>
         </ul>
       </div>
       <div class="meh">
@@ -344,6 +358,32 @@ footer a{margin-right:1.2rem}
       <figure class="pic "><img src="https://images.unsplash.com/photo-1757847109975-7130ab16ddc3?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="阿寒湖と森の風景" loading="lazy"><span class="tag">イメージ</span></figure>
       <figure class="pic "><img src="https://images.unsplash.com/photo-1759146782960-d5f6ed4d79f3?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="タンチョウ" loading="lazy"><span class="tag">イメージ</span></figure>
       <figure class="pic "><img src="https://images.unsplash.com/photo-1762356201977-b32cf6f2ace1?auto=format&amp;fit=crop&amp;w=1200&amp;q=70" alt="冬の森と雄阿寒岳" loading="lazy"><span class="tag">イメージ</span></figure>
+    </div>
+  </div>
+</section>
+
+<section id="access">
+  <div class="wrap">
+    <h2><span class="nb">空港から20分で、</span><span class="nb">森と湖のそばの暮らしへ。</span></h2>
+    <p class="sub">阿寒町は、北海道の東側(道東)、釧路市の北西にある町です。阿寒湖温泉や釧路湿原など、道東の自然へ出かけやすい場所にあります。</p>
+    <div class="access">
+      <div>
+        <iframe class="map" title="北海道のなかの阿寒町の位置" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=%E5%8C%97%E6%B5%B7%E9%81%93%E9%87%A7%E8%B7%AF%E5%B8%82%E9%98%BF%E5%AF%92%E7%94%BA&amp;z=6&amp;output=embed"></iframe>
+        <p class="map-cap">北海道のなかの阿寒町</p>
+        <h3>行き方</h3>
+        <ul>
+          <li>東京(羽田)から:たんちょう釧路空港まで直行便で2時間弱(JAL・ANA・AIRDO)</li>
+          <li>札幌から:新千歳空港から釧路空港まで飛行機で約45〜55分。JR特急おおぞらなら札幌駅から釧路駅まで約4時間</li>
+          <li>釧路空港から:阿寒バスで約20分</li>
+          <li>JR釧路駅前から:阿寒バスで約1時間(<a href="https://www.akanbus.co.jp/route/" target="_blank" rel="noopener">時刻表</a>)</li>
+        </ul>
+      </div>
+      <div>
+        <iframe class="map" title="むすびばのある阿寒町北新町のまわり" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=%E5%8C%97%E6%B5%B7%E9%81%93%E9%87%A7%E8%B7%AF%E5%B8%82%E9%98%BF%E5%AF%92%E7%94%BA%E5%8C%97%E6%96%B0%E7%94%BA2%E4%B8%81%E7%9B%AE&amp;z=15&amp;output=embed"></iframe>
+        <p class="map-cap">むすびばのある阿寒町北新町のまわり</p>
+        <h3>住所</h3>
+        <p>北海道釧路市阿寒町北新町2丁目</p>
+      </div>
     </div>
   </div>
 </section>
@@ -370,10 +410,10 @@ footer a{margin-right:1.2rem}
 
 <section id="living">
   <div class="wrap living">
-    <figure class="pic wide"><img src="stove.jpg" alt="ストーブで薪が燃えている様子" loading="lazy" style="object-position:55% 50%"><span class="tag">イメージ</span></figure>
+    <figure class="pic wide"><img src="stove.jpg" alt="ストーブで炎が燃えている様子" loading="lazy" style="object-position:55% 50%"></figure>
     <div class="living-text">
       <h2>火のまわりに、人が集まる。</h2>
-      <p>むすびばの自慢は、広いリビングです。この冬からはペレットストーブを置く予定。炎のゆらめきに誘われて、気づけばみんなが集まってきます。</p>
+      <p>むすびばの自慢は、広いリビングです。この冬から、ペレットストーブが仲間入りしました。炎のゆらめきに誘われて、気づけばみんなが集まってきます。</p>
       <p>ご飯を囲んだり、ソファでくつろいだり、週末の行き先を相談したり。滞在した人がいちばん気に入っていたのも、このリビングでした。</p>
     </div>
   </div>
@@ -389,22 +429,22 @@ footer a{margin-right:1.2rem}
         <li class="spot">
           <figure class="pic"><img src="sauna.jpg" alt="むすびばのサウナ。木の壁と腰かけ" loading="lazy"></figure>
           <b>サウナ</b>
-          <span>北海道の澄んだ空気で外気浴を</span>
+          <span>仲間と入れば、心も体もぽかぽかに</span>
         </li>
         <li class="spot">
-          <figure class="pic"><img src="kitchen.jpg" alt="むすびばのキッチン。対面カウンターとダイニングテーブル" loading="lazy"></figure>
+          <figure class="pic"><img src="kitchen.jpg" alt="むすびばのキッチン。アイランドカウンターとダイニングテーブル" loading="lazy"></figure>
           <b>キッチン</b>
-          <span>持ち寄りのご飯会はここから</span>
+          <span>アイランドカウンターだから、話しながらみんなで料理も食事も</span>
         </li>
         <li class="spot">
           <figure class="pic soon" aria-hidden="true"><span>写真は準備中です</span></figure>
           <b>ガレージ</b>
-          <span>電動シャッター付き。自転車やバイクも雨に濡れない</span>
+          <span>電動シャッター付き。自転車やバイクも雨に濡らさず安心</span>
         </li>
         <li class="spot">
           <figure class="pic soon" aria-hidden="true"><span>写真は準備中です</span></figure>
           <b>ランドリールーム</b>
-          <span>長期の滞在も身軽に</span>
+          <span>乾燥機も完備。雨の日の洗濯もへっちゃら</span>
         </li>
     </ul>
   </div>
@@ -414,7 +454,7 @@ footer a{margin-right:1.2rem}
   <div class="wrap">
     <h2>部屋と料金</h2>
     <p class="sub">寝室はシンプルに。暮らしの中心はリビングです。</p>
-    <p>入居は1か月から。数週間だけ暮らしてみたい人も、あきらめずにまず相談してください。表示はすべて1人あたりの月額です。</p>
+    <p>入居は1か月からです。1か月未満の短期滞在を希望する人は、まずはお問い合わせください。表示はすべて1人あたりの月額です。</p>
     <div class="rooms">
       <div class="room">
         <h3>1人部屋</h3><p class="size">6畳</p>
@@ -431,14 +471,13 @@ footer a{margin-right:1.2rem}
     </div>
     <div class="inc">
       <p><b>料金に含まれるもの:</b>家賃、光熱費、管理費、Wi-Fi(光回線)</p>
-      <p>カップルの場合は、2人部屋なら1人45,000円ずつ、1人部屋に2人なら2人で70,000円。数週間など1か月未満の滞在も、空き状況にあわせて相談に乗ります。</p>
     </div>
     <div class="cols">
       <div>
         <h3>家にあるもの</h3>
         <ul>
           <li>リビング、キッチン、風呂、トイレ、ランドリールーム、サウナ、ガレージ</li>
-          <li>各部屋に灯油ストーブ。リビングにはペレットストーブ(設置予定)</li>
+          <li>各部屋に灯油ストーブ。リビングにはペレットストーブ</li>
           <li>家具一式。マットレス、枕、布団、毛布</li>
           <li>シーツは持参してください(中古の貸し出しは滞在中1,000円)</li>
         </ul>
@@ -463,7 +502,20 @@ footer a{margin-right:1.2rem}
     <h2><span class="nb">暮らしと、</span><span class="nb">手を貸すことを</span><span class="nb">交換する。</span></h2>
     <p>阿寒には、人の手を必要としている仕事があります。空き家の改修、宿の清掃、町の行事の準備。</p>
     <div class="eq"><span>週10時間ほどのお手伝い</span>=<span>家賃・光熱費が無料</span></div>
-    <p>時期によっては、こうした地域のお手伝いと引き換えに、家賃無料で暮らせる枠を設けることがあります。枠の有無は時期によって変わるので、気になる人は相談してください。</p>
+    <p>たとえば、こんなお手伝いがあります。</p>
+    <div class="cases">
+      <div class="case">
+        <figure class="pic soon" aria-hidden="true"><span>写真は準備中です</span></figure>
+        <b>町のアパートを、DIYで生まれ変わらせる</b>
+        <span>町内の事業者さんが持つアパートの改修を、仲間と一緒に手伝います。</span>
+      </div>
+      <div class="case">
+        <figure class="pic soon" aria-hidden="true"><span>写真は準備中です</span></figure>
+        <b>スナックのママのお店を手伝う</b>
+        <span>カウンターの内側から、町の人の素顔や夜の阿寒に出会えます。</span>
+      </div>
+    </div>
+    <p>こうした地域のお手伝いと引き換えに、家賃無料で暮らせる枠を設けることがあります。枠の有無は時期によって変わるので、気になる人は相談してください。</p>
   </div>
 </section>
 
@@ -512,7 +564,7 @@ footer a{margin-right:1.2rem}
     <figure class="pic tall"><img src="host.jpg" alt="管理人の西本将来" loading="lazy" style="object-position:50% 35%"></figure>
     <div>
       <h2>管理人も、ここで暮らしています。</h2>
-      <p><b>西本将来(にしもと・まさき)</b> 阿寒町の地域おこし協力隊として、空き家の活用と移住の相談を担当しています。広島で育ち、東京のITベンチャーを経て、2025年9月に移住しました。</p>
+      <p><b>西本将来(にしもと・まさき)|阿寒町地域おこし協力隊</b><br>町で空き家の活用と移住の相談を担当しています。町の人や仕事、住まいのことなら、なんでも聞いてください。2025年9月に東京から移住しました。</p>
       <p>きっかけは学生時代、原付で北海道を旅していて、阿寒町の近くでバイクが故障したこと。助けてくれた町の人のあたたかさと、肩書き抜きで迎えてもらえる心地よさを、都会で少し疲れた人にも味わってほしくて、むすびばを始めました。</p>
       <p>まずは、暮らしに来てください。</p>
     </div>
@@ -522,14 +574,14 @@ footer a{margin-right:1.2rem}
 <section id="faq" class="band">
   <div class="wrap narrow">
     <h2>よくある質問</h2>
-    <details><summary>仕事がなくても入居できますか?</summary><p>できます。休職中や転職の合間に来る人もいます。地域の仕事やお手伝いを探したい人には、つながりのある農家・お店・宿泊施設などを紹介できる場合があります(求人の状況によります)。</p></details>
+    <details><summary>仕事がなくても入居できますか?</summary><p>できます。休職中や転職の合間に、立ち止まりに来る人もいます。働きたくなったら、つながりのある農家・お店・宿泊施設などを紹介できる場合があります(求人の状況によります)。</p></details>
     <details><summary>車がなくても暮らせますか?</summary><p>暮らせます。町内にコンビニやスーパーがあり、釧路空港へはバスで約20分(1日3〜4本)、JR釧路駅へは約1時間です。町内にはレンタカーやレンタサイクルを扱う事業者もあります。</p></details>
     <details><summary>どんな人が住んでいますか?</summary><p>これまでに旅人、学生、会社員、フリーランス、リモートワーカーなどが滞在しました。管理人も同じ家に住んでいます。</p></details>
-    <details><summary>冬でも大丈夫ですか?</summary><p>しっかり寒くなりますが、雪はほとんど降りません。各部屋に灯油ストーブがあり、リビングにはペレットストーブを置く予定です。冬の北海道を体験したい人には、むしろいい季節です。</p></details>
-    <details><summary>数週間だけの滞在でもいいですか?</summary><p>入居は1か月からが基本ですが、数週間の滞在も空き状況にあわせて相談に乗ります。まずは気軽に連絡してください。</p></details>
+    <details><summary>冬でも大丈夫ですか?</summary><p>しっかり寒くなりますが、雪はほとんど降りません。各部屋に灯油ストーブ、リビングにはペレットストーブがあるので、家の中はあたたかく過ごせます。澄んだ空気や冬の生き物など、冬にしか見られない北海道を体験できます。</p></details>
+    <details><summary>数週間だけの滞在でもいいですか?</summary><p>入居は1か月からです。1か月未満の短期滞在を希望する人は、空き状況を確認してご案内するので、まずはお問い合わせください。</p></details>
     <details><summary>直前でも申し込めますか?</summary><p>空きがあれば、入居の直前でも大丈夫です。まずは気軽に相談してください。</p></details>
     <details><summary>入居の前に見学できますか?</summary><p>オンラインでの面談や、現地の見学ができます。相談のときに希望を伝えてください。</p></details>
-    <details><summary>将来、阿寒で起業や移住をしたい場合も相談できますか?</summary><p>はい。管理人は空き家の活用と移住の相談を担当しています。暮らしながら一緒に考えましょう。</p></details>
+    <details><summary>将来、阿寒で起業や移住をしたい場合も相談できますか?</summary><p>もちろんです。管理人は町で空き家の活用と移住の相談を担当しているので、住まい探しや町の人の紹介まで、暮らしながら一緒に考えられます。</p></details>
   </div>
 </section>
 
@@ -541,7 +593,7 @@ footer a{margin-right:1.2rem}
       <li><b>話してみる</b>オンラインで30分ほど。暮らし方や希望をすり合わせます。</li>
       <li><b>暮らしはじめる</b>入居日と部屋を決めて契約。阿寒での暮らしが始まります。</li>
     </ol>
-    <p class="sub">アクセス:北海道釧路市阿寒町(詳しい住所は申し込み後にお伝えします)。阿寒バスで釧路空港から約20分、JR釧路駅前から約1時間(<a href="https://www.akanbus.co.jp/route/" target="_blank" rel="noopener">時刻表</a>)。</p>
+    <p class="sub">アクセスや場所は<a href="#access">こちら</a>。</p>
     <div class="final">
       <h2 style="margin-top:3.5rem">まずは、ひと月。</h2>
       <a class="btn sun" href="https://docs.google.com/forms/d/e/1FAIpQLSfh2URaJs0p1q-b7uz_g9CNVXAaE6Cpme1CMsqIKFfo1lqntw/viewform" target="_blank" rel="noopener">入居の相談をする</a>
