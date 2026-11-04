@@ -73,8 +73,8 @@ section{padding-block:5.5rem}
 .logo{display:flex;align-items:center;gap:.7rem;text-decoration:none}
 .logo-svg{display:block;width:auto}
 .logo small{font-size:.8rem;opacity:.85}
-.nav a.navlink{font-family:var(--round);font-weight:400;font-size:.95rem;text-decoration:none;background:var(--sun);color:#2A2A27;padding:.4rem 1.1rem;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}
-.nav .logo small{background:var(--sky);color:#F3EEE4;opacity:1;padding:.2rem .7rem;border-radius:999px;font-size:.8rem}
+.nav a.navlink{font-family:var(--round);font-weight:400;font-size:.95rem;text-decoration:none;color:inherit;border:1.5px solid currentColor;padding:.35rem 1.1rem;border-radius:999px;background:color-mix(in srgb,currentColor 8%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.nav .logo small{opacity:1;font-size:.8rem}
 .hero-body{padding-block:4.5rem 2.5rem;max-width:44rem}
 .hero{position:relative}
 .hero .nav,.hero .hero-body{position:relative;z-index:2}
@@ -199,7 +199,27 @@ section{padding-block:5.5rem}
 /* floating header */
 html{scroll-padding-top:4.6rem}
 .hero{padding-top:4.6rem}
-.hero .nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:.6rem max(20px,calc((100% - 62rem)/2 + 20px));background:color-mix(in srgb,var(--sky) 92%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 2px 12px rgba(0,0,0,.18)}
+.hero .nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:.6rem max(20px,calc((100% - 62rem)/2 + 20px));background:transparent;color:#F3EEE4;transition:background .3s,box-shadow .3s,color .3s}
+.hero .nav.scrolled{background:color-mix(in srgb,var(--paper) 72%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+.hero .nav.scrolled .logo-svg path[fill="#F3EEE4"]{fill:var(--ink)}
+.hero .nav:not(.scrolled) .logo small,.hero .nav:not(.scrolled) .logo-svg{text-shadow:0 1px 8px rgba(0,0,0,.55);filter:drop-shadow(0 1px 6px rgba(0,0,0,.4))}
+/* route map */
+.rmap{display:grid;grid-template-columns:minmax(0,1.5fr) auto minmax(0,1fr) auto minmax(0,.9fr);grid-template-areas:"oa aa ha la g" "or ar hr lr g";gap:.8rem .4rem;align-items:center;margin-top:.6rem}
+.ro{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.7rem .8rem;font-size:.82rem;line-height:1.45;min-width:0}
+.ro ul{list-style:none;margin:0;padding:0;display:grid;gap:.35rem}
+.ro li b{display:block;font-weight:500}
+.ro li span{color:var(--muted);font-size:.76rem}
+.rk{font-family:var(--round);margin:0 0 .35rem;font-size:.92rem}
+.rk2{margin:.6rem 0 .3rem;font-size:.75rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:.5rem}
+.ra{text-align:center}
+.ra::after{content:"→";color:var(--sun);font-size:1.2rem}
+.rh{background:var(--card);border:2px solid var(--sun);border-radius:14px;padding:1rem .4rem;text-align:center;font-family:var(--round);font-size:.95rem;line-height:1.4;min-width:0}
+.rl{font-size:.72rem;color:var(--muted);text-align:center;line-height:1.35}
+.rl::after{content:"→";display:block;color:var(--sun);font-size:1.2rem;line-height:1}
+.rg{grid-area:g;align-self:stretch;background:var(--sun);color:#2A2A27;border-radius:14px;display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:var(--round);font-size:1.15rem;padding:1rem .4rem;text-align:center;min-width:0}
+.rg small{font-family:var(--sans);font-size:.7rem;opacity:.75}
+.ro.air{grid-area:oa}.ro.rail{grid-area:or}.a1{grid-area:aa}.a2{grid-area:ar}.h1{grid-area:ha}.h2{grid-area:hr}.l1{grid-area:la}.l2{grid-area:lr}
+@media (max-width:560px){.rmap{grid-template-columns:1fr 1fr;grid-template-areas:"oa or" "aa ar" "ha hr" "la lr" "g g";align-items:start}.ro.rail{align-self:stretch}.ra::after,.rl::after{content:"↓"}.rg{padding:.9rem}}
 .hero .logo-svg{height:38px}
 /* route diagram */
 .route{display:grid;gap:1.4rem}
@@ -391,18 +411,33 @@ footer a{margin-right:1.2rem}
       </div>
       <div>
         <h3>行き方</h3>
-        <div class="route">
-          <div>
-            <p class="rlabel">飛行機で</p>
-            <div class="rrow"><span class="node">東京<br>(羽田)</span><span class="leg">直行便<br>2時間弱</span><span class="node">たんちょう<br>釧路空港</span><span class="leg">阿寒バス<br>約20分</span><span class="node goal">むすびば</span></div>
-            <div class="rrow"><span class="node">札幌<br>(新千歳)</span><span class="leg">約45〜<br>55分</span><span class="node">たんちょう<br>釧路空港</span><span class="leg">阿寒バス<br>約20分</span><span class="node goal">むすびば</span></div>
+        <div class="rmap">
+          <div class="ro air">
+            <p class="rk">飛行機で</p>
+            <ul>
+              <li><b>東京(羽田)</b><span>JAL・ANA・AIRDO 2時間弱</span></li>
+              <li><b>札幌(新千歳・丘珠)</b><span>ANA・JAL 約50分</span></li>
+            </ul>
+            <p class="rk2">夏期のみの直行便(2026年)</p>
+            <ul>
+              <li><b>大阪(関西)</b><span>Peach 7〜9月 約2時間</span></li>
+              <li><b>名古屋(中部)</b><span>JAL 8月 約1時間50分</span></li>
+              <li><b>大阪(伊丹)</b><span>ANA 8月の5日間 約2時間</span></li>
+            </ul>
           </div>
-          <div>
-            <p class="rlabel">電車で</p>
-            <div class="rrow"><span class="node">札幌駅</span><span class="leg">JR特急<br>おおぞら<br>約4時間</span><span class="node">JR<br>釧路駅</span><span class="leg">阿寒バス<br>約1時間</span><span class="node goal">むすびば</span></div>
+          <div class="ra a1" aria-hidden="true"></div>
+          <div class="rh h1">たんちょう<br>釧路空港</div>
+          <div class="rl l1">阿寒バス<br>約20分</div>
+          <div class="rg">むすびば<small>阿寒町北新町</small></div>
+          <div class="ro rail">
+            <p class="rk">電車で</p>
+            <ul><li><b>札幌駅</b><span>JR特急おおぞら 約4時間</span></li></ul>
           </div>
+          <div class="ra a2" aria-hidden="true"></div>
+          <div class="rh h2">JR<br>釧路駅</div>
+          <div class="rl l2">阿寒バス<br>約1時間</div>
         </div>
-        <p class="map-cap">直行便は JAL・ANA・AIRDO。阿寒バスの<a href="https://www.akanbus.co.jp/route/" target="_blank" rel="noopener">時刻表</a></p>
+        <p class="map-cap">夏期便の運航期間・曜日は年によって変わります。阿寒バスの<a href="https://www.akanbus.co.jp/route/" target="_blank" rel="noopener">時刻表</a></p>
       </div>
     </div>
   </div>
@@ -634,6 +669,7 @@ document.querySelectorAll('.spots').forEach(function(l){var h=l.previousElementS
 function st(){var m=l.scrollWidth-l.clientWidth-2;b[0].disabled=l.scrollLeft<=2;b[1].disabled=l.scrollLeft>=m;}
 b.forEach(function(x){x.addEventListener('click',function(){var c=l.firstElementChild;var w=c?c.getBoundingClientRect().width+parseFloat(getComputedStyle(l).columnGap||0):l.clientWidth;l.scrollBy({left:w*Number(x.dataset.dir),behavior:'smooth'});});});
 l.addEventListener('scroll',st,{passive:true});window.addEventListener('resize',st);st();});
+(function(){var n=document.querySelector('.hero .nav'),h=document.querySelector('.hero');if(!n||!h)return;function f(){n.classList.toggle('scrolled',window.scrollY>h.offsetHeight-80);}window.addEventListener('scroll',f,{passive:true});window.addEventListener('resize',f);f();})();
 </script>
 </body>
 </html>
