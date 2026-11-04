@@ -196,6 +196,24 @@ section{padding-block:5.5rem}
 .host{display:grid;grid-template-columns:16rem 1fr;gap:3rem;align-items:start}
 .host>div{min-width:0}
 
+/* floating header */
+html{scroll-padding-top:4.6rem}
+.hero{padding-top:4.6rem}
+.hero .nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:.6rem max(20px,calc((100% - 62rem)/2 + 20px));background:color-mix(in srgb,var(--sky) 92%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 2px 12px rgba(0,0,0,.18)}
+.hero .logo-svg{height:38px}
+/* route diagram */
+.route{display:grid;gap:1.4rem}
+.rlabel{font-family:var(--round);margin:0 0 .5rem;font-size:1rem}
+.rrow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:.35rem;margin-bottom:.5rem}
+.node{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.55rem .4rem;text-align:center;font-size:.86rem;line-height:1.4;min-width:0}
+.node.goal{background:var(--sun);border-color:var(--sun);color:#2A2A27;font-family:var(--round)}
+.leg{font-size:.72rem;line-height:1.35;color:var(--muted);text-align:center;position:relative;padding-bottom:.7rem;min-width:3.6rem}
+.leg::after{content:"";position:absolute;left:.2rem;right:.2rem;bottom:.25rem;border-bottom:2px solid var(--sun)}
+.leg::before{content:"";position:absolute;right:0;bottom:0;border:5px solid transparent;border-left:7px solid var(--sun);border-right:0}
+.host-name{border-left:4px solid var(--sun);padding-left:1rem;margin:0 0 1.4rem}
+.host-name .nm{font-family:var(--round);font-size:1.45rem;line-height:1.4;margin:0}
+.host-name .nm small{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin-left:.4rem}
+.host-name .role{margin:0;color:var(--muted);font-size:.92rem}
 /* access */
 .access{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:1.6rem}
 .access>div{min-width:0}
@@ -282,10 +300,10 @@ footer a{margin-right:1.2rem}
 <section id="about">
   <div class="wrap intro">
     <div>
-      <h2><span class="nb">肩書きをおろして、</span><span class="nb">ただの自分に戻れる町。</span></h2>
+      <h2><span class="nb">肩書きのなかった、</span><span class="nb">あの頃の自分へ。</span></h2>
       <p>ゲストハウスより長く、移住より軽く。むすびばは、阿寒町で暮らしてみるためのシェアハウスです。</p>
-      <p>町のお祭りに出る。商店で立ち話をする。持ち寄りのご飯会で、近所の人と同じ鍋をつつく。観光では通り過ぎてしまう町の毎日に、少しだけ混ざってみてください。</p>
-      <p>ここでは、肩書きや経歴はいりません。肩ひじを張らずに、ひとりの人として町の人とつながれる。それが、むすびばでいちばん届けたいものです。</p>
+      <p>町のお祭りに出る。商店で立ち話をする。近所の人と同じ鍋をつつく。子どものころ当たり前だった、名前で呼び合う毎日が、この町にはまだあります。</p>
+      <p>ここでは、肩書きも経歴もいりません。ひとりの人として、町の人とつながる。それが、むすびばでいちばん届けたいものです。</p>
     </div>
     <figure class="pic tall"><img src="dining.jpg" alt="むすびばのダイニング。食器を並べたテーブルとリビング" loading="lazy" style="object-position:66% 50%"></figure>
   </div>
@@ -298,7 +316,7 @@ footer a{margin-right:1.2rem}
       <div>
         <figure class="pic "><img src="ldk.jpg" alt="むすびばのLDK。キッチンとダイニング、ソファ" loading="lazy" style="object-position:50% 60%"></figure>
         <p class="kicker">住まい</p>
-        <h3>スーツケースひとつで、今日から暮らせる。</h3>
+        <h3>スーツケースひとつで始まる暮らし</h3>
         <p>家具、光回線、サウナまでそろった一軒家。光熱費も込みの月額制です。</p>
       </div>
       <div>
@@ -365,24 +383,26 @@ footer a{margin-right:1.2rem}
 <section id="access">
   <div class="wrap">
     <h2><span class="nb">空港から20分で、</span><span class="nb">森と湖のそばの暮らしへ。</span></h2>
-    <p class="sub">阿寒町は、北海道の東側(道東)、釧路市の北西にある町です。阿寒湖温泉や釧路湿原など、道東の自然へ出かけやすい場所にあります。</p>
+    <p class="sub">阿寒町は、ひがし北海道、釧路市の郊外の田舎町です。阿寒湖温泉や釧路湿原など、北海道の大自然へ出かけやすい場所にあります。</p>
     <div class="access">
       <div>
-        <iframe class="map" title="北海道のなかの阿寒町の位置" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=%E5%8C%97%E6%B5%B7%E9%81%93%E9%87%A7%E8%B7%AF%E5%B8%82%E9%98%BF%E5%AF%92%E7%94%BA&amp;z=6&amp;output=embed"></iframe>
-        <p class="map-cap">北海道のなかの阿寒町</p>
-        <h3>行き方</h3>
-        <ul>
-          <li>東京(羽田)から:たんちょう釧路空港まで直行便で2時間弱(JAL・ANA・AIRDO)</li>
-          <li>札幌から:新千歳空港から釧路空港まで飛行機で約45〜55分。JR特急おおぞらなら札幌駅から釧路駅まで約4時間</li>
-          <li>釧路空港から:阿寒バスで約20分</li>
-          <li>JR釧路駅前から:阿寒バスで約1時間(<a href="https://www.akanbus.co.jp/route/" target="_blank" rel="noopener">時刻表</a>)</li>
-        </ul>
+        <iframe class="map" title="むすびばシェアハウスの場所" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=%E3%82%80%E3%81%99%E3%81%B3%E3%81%B0%E3%82%B7%E3%82%A7%E3%82%A2%E3%83%8F%E3%82%A6%E3%82%B9%20%E5%8C%97%E6%B5%B7%E9%81%93%E9%87%A7%E8%B7%AF%E5%B8%82%E9%98%BF%E5%AF%92%E7%94%BA%E5%8C%97%E6%96%B0%E7%94%BA2%E4%B8%81%E7%9B%AE12-6&amp;z=6&amp;output=embed"></iframe>
+        <p class="map-cap">むすびばシェアハウス:〒085-0216 北海道釧路市阿寒町北新町2丁目12-6</p>
       </div>
       <div>
-        <iframe class="map" title="むすびばのある阿寒町北新町のまわり" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=%E5%8C%97%E6%B5%B7%E9%81%93%E9%87%A7%E8%B7%AF%E5%B8%82%E9%98%BF%E5%AF%92%E7%94%BA%E5%8C%97%E6%96%B0%E7%94%BA2%E4%B8%81%E7%9B%AE&amp;z=15&amp;output=embed"></iframe>
-        <p class="map-cap">むすびばのある阿寒町北新町のまわり</p>
-        <h3>住所</h3>
-        <p>北海道釧路市阿寒町北新町2丁目</p>
+        <h3>行き方</h3>
+        <div class="route">
+          <div>
+            <p class="rlabel">飛行機で</p>
+            <div class="rrow"><span class="node">東京<br>(羽田)</span><span class="leg">直行便<br>2時間弱</span><span class="node">たんちょう<br>釧路空港</span><span class="leg">阿寒バス<br>約20分</span><span class="node goal">むすびば</span></div>
+            <div class="rrow"><span class="node">札幌<br>(新千歳)</span><span class="leg">約45〜<br>55分</span><span class="node">たんちょう<br>釧路空港</span><span class="leg">阿寒バス<br>約20分</span><span class="node goal">むすびば</span></div>
+          </div>
+          <div>
+            <p class="rlabel">電車で</p>
+            <div class="rrow"><span class="node">札幌駅</span><span class="leg">JR特急<br>おおぞら<br>約4時間</span><span class="node">JR<br>釧路駅</span><span class="leg">阿寒バス<br>約1時間</span><span class="node goal">むすびば</span></div>
+          </div>
+        </div>
+        <p class="map-cap">直行便は JAL・ANA・AIRDO。阿寒バスの<a href="https://www.akanbus.co.jp/route/" target="_blank" rel="noopener">時刻表</a></p>
       </div>
     </div>
   </div>
@@ -434,7 +454,7 @@ footer a{margin-right:1.2rem}
         <li class="spot">
           <figure class="pic"><img src="kitchen.jpg" alt="むすびばのキッチン。アイランドカウンターとダイニングテーブル" loading="lazy"></figure>
           <b>キッチン</b>
-          <span>アイランドカウンターだから、話しながらみんなで料理も食事も</span>
+          <span>アイランドカウンターだから、みんなで料理も食事も</span>
         </li>
         <li class="spot">
           <figure class="pic soon" aria-hidden="true"><span>写真は準備中です</span></figure>
@@ -505,14 +525,14 @@ footer a{margin-right:1.2rem}
     <p>たとえば、こんなお手伝いがあります。</p>
     <div class="cases">
       <div class="case">
-        <figure class="pic soon" aria-hidden="true"><span>写真は準備中です</span></figure>
+        <figure class="pic"><img src="help-diy.jpg" alt="アパートの手すりを塗装する様子" loading="lazy" style="object-position:50% 45%"></figure>
         <b>町のアパートを、DIYで生まれ変わらせる</b>
         <span>町内の事業者さんが持つアパートの改修を、仲間と一緒に手伝います。</span>
       </div>
       <div class="case">
-        <figure class="pic soon" aria-hidden="true"><span>写真は準備中です</span></figure>
-        <b>スナックのママのお店を手伝う</b>
-        <span>カウンターの内側から、町の人の素顔や夜の阿寒に出会えます。</span>
+        <figure class="pic"><img src="help-event.jpg" alt="町のお店のイベントで笑顔の人たち" loading="lazy"></figure>
+        <b>イベントやご飯屋さんのお手伝い</b>
+        <span>町のイベントやお店を手伝いながら、町の人の素顔に出会えます。</span>
       </div>
     </div>
     <p>こうした地域のお手伝いと引き換えに、家賃無料で暮らせる枠を設けることがあります。枠の有無は時期によって変わるので、気になる人は相談してください。</p>
@@ -564,7 +584,8 @@ footer a{margin-right:1.2rem}
     <figure class="pic tall"><img src="host.jpg" alt="管理人の西本将来" loading="lazy" style="object-position:50% 35%"></figure>
     <div>
       <h2>管理人も、ここで暮らしています。</h2>
-      <p><b>西本将来(にしもと・まさき)|阿寒町地域おこし協力隊</b><br>町で空き家の活用と移住の相談を担当しています。町の人や仕事、住まいのことなら、なんでも聞いてください。2025年9月に東京から移住しました。</p>
+      <div class="host-name"><p class="nm">西本将来<small>(にしもと・まさき)</small></p><p class="role">阿寒町地域おこし協力隊</p></div>
+      <p>町で空き家の活用と移住の相談を担当しています。2025年9月に東京から移住しました。</p>
       <p>きっかけは学生時代、原付で北海道を旅していて、阿寒町の近くでバイクが故障したこと。助けてくれた町の人のあたたかさと、肩書き抜きで迎えてもらえる心地よさを、都会で少し疲れた人にも味わってほしくて、むすびばを始めました。</p>
       <p>まずは、暮らしに来てください。</p>
     </div>
